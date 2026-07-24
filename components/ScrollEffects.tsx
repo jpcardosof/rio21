@@ -42,22 +42,56 @@ export function ScrollEffects() {
       return;
     }
 
+    const reveal = (element: HTMLElement) => {
+      element.classList.add("is-visible");
+      observer.unobserve(element);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            reveal(entry.target as HTMLElement);
           }
         });
       },
       {
+        // threshold 0 => reveals as soon as any pixel enters the viewport.
+        // A ratio-based threshold can never be met by sections taller than the
+        // viewport (e.g. the mobile gallery), leaving them stuck invisible.
         rootMargin: "0px 0px -12% 0px",
-        threshold: 0.12
+        threshold: 0
       }
     );
 
-    revealTargets.forEach((element) => observer.observe(element));
+    // Safety net: never leave a full section as an invisible (black) void.
+    // Reveal anything already in/above the viewport on load, and anything
+    // taller than the viewport (which a fade barely helps anyway).
+    const viewportHeight = window.innerHeight;
+    revealTargets.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const tallerThanViewport = rect.height > viewportHeight;
+      const alreadyInView = rect.top < viewportHeight && rect.bottom > 0;
+
+      if (tallerThanViewport || alreadyInView) {
+        reveal(element);
+      } else {
+        observer.observe(element);
+      }
+    });
+
+    // Last-resort fallback: if anything is still hidden shortly after load,
+    // force it visible so the page can never look broken.
+    const fallback = window.setTimeout(() => {
+      revealTargets.forEach((element) => {
+        if (!element.classList.contains("is-visible")) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < viewportHeight) {
+            reveal(element);
+          }
+        }
+      });
+    }, 1500);
 
     function handlePointerMove(event: PointerEvent) {
       const target =
@@ -103,6 +137,7 @@ export function ScrollEffects() {
     });
 
     return () => {
+      window.clearTimeout(fallback);
       observer.disconnect();
       document.removeEventListener("pointermove", handlePointerMove);
       document.removeEventListener("pointerout", handlePointerLeave);
