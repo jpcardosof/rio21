@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #070707;
+  color: #f8f8f8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  outline-offset: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #c9a227;
+}
+
+[id] {
+  scroll-margin-top: 96px;
+}
+
+::selection {
+  background: #c1121f;
+  color: #ffffff;
+}
+
+@keyframes beltSweep {
+  0% {
+    transform: translateX(-35%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(135%) skewX(-18deg);
+  }
+}
+
+@keyframes borderSpin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes softFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes linePulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scaleX(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+[data-reveal] {
+  filter: blur(10px);
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 720ms ease,
+    transform 720ms ease,
+    filter 720ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-motion-card] {
+  position: relative;
+  transform:
+    perspective(900px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(0);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+[data-motion-card] > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-motion-card]::before {
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 20%),
+    rgba(255, 255, 255, 0.15),
+    transparent 32%
+  );
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 220ms ease;
+  z-index: 0;
+}
+
+[data-motion-card]:hover::before {
+  opacity: 1;
+}
+
+.effect-section {
+  overflow: hidden;
+  position: relative;
+}
+
+.effect-section::before {
+  background:
+    radial-gradient(circle at 18% 14%, rgba(193, 18, 31, 0.24), transparent 26%),
+    radial-gradient(circle at 82% 6%, rgba(201, 162, 39, 0.18), transparent 22%),
+    linear-gradient(135deg, transparent 0 46%, rgba(255, 255, 255, 0.045) 46% 47%, transparent 47% 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.martial-panel {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.martial-panel::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  content: "";
+  height: 140%;
+  left: -35%;
+  pointer-events: none;
+  position: absolute;
+  top: -20%;
+  transform: skewX(-18deg);
+  width: 22%;
+  z-index: 2;
+}
+
+.martial-panel::after {
+  background:
+    linear-gradient(90deg, rgba(193, 18, 31, 0.82), rgba(201, 162, 39, 0.58), rgba(23, 76, 114, 0.72)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 34%);
+  bottom: 0;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform-origin: left;
+}
+
+.hover-lift {
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.hover-lift:hover {
+  border-color: rgba(201, 162, 39, 0.55);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+  transform: translateY(-6px);
+}
+
+.image-zoom {
+  transition:
+    filter 420ms ease,
+    transform 520ms ease;
+}
+
+.group:hover .image-zoom {
+  filter: contrast(1.08) saturate(1.08);
+  transform: scale(1.06);
+}
+
+.story-ring {
+  isolation: isolate;
+  position: relative;
+}
+
+.story-ring::before {
+  background: conic-gradient(from 0deg, #c1121f, #c9a227, #174c72, #c1121f);
+  border-radius: inherit;
+  content: "";
+  inset: -2px;
+  position: absolute;
+  z-index: -1;
+}
+
+.kinetic-line {
+  background: linear-gradient(90deg, #c1121f, #c9a227, #174c72);
+  display: block;
+  height: 3px;
+  transform-origin: left;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .martial-panel::before {
+    animation: beltSweep 4.8s ease-in-out infinite;
+  }
+
+  .martial-panel::after,
+  .kinetic-line {
+    animation: linePulse 3.2s ease-in-out infinite;
+  }
+
+  .story-ring::before {
+    animation: borderSpin 9s linear infinite;
+  }
+
+  .float-soft {
+    animation: softFloat 6s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    filter: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  [data-motion-card] {
+    transform: none;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply text-xs font-black uppercase tracking-[0.18em] text-gold;
+  }
+
+  .display-title {
+    @apply text-4xl font-black leading-[0.95] text-white sm:text-5xl lg:text-7xl;
+  }
+
+  .section-title {
+    @apply text-3xl font-black leading-tight sm:text-4xl lg:text-5xl;
+  }
+
+  .body-copy {
+    @apply text-base leading-7 text-neutral-300 sm:text-lg;
+  }
+
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-sm bg-ember px-5 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-red-700;
+  }
+
+  .button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-sm border border-white/25 px-5 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:border-gold hover:text-gold;
+  }
+
+  .button-dark {
+    @apply inline-flex min-h-12 items-center justify-center rounded-sm bg-ink px-5 py-3 text-center text-sm font-black uppercase tracking-wide text-white transition hover:bg-steel;
+  }
+
+  .card-dark {
+    @apply rounded-lg border border-white/10 bg-white/[0.04];
+  }
+
+  .card-light {
+    @apply rounded-lg border border-black/10 bg-white;
+  }
+}
