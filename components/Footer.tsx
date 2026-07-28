@@ -6,7 +6,7 @@ export function Footer() {
       <div className="section-shell grid gap-10 lg:grid-cols-[1fr_1.6fr_1fr]">
         <div>
           <a href="#inicio" className="inline-flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-sm border border-gold bg-white text-sm font-black text-ink">
+            <span className="grid h-11 w-11 place-items-center rounded-sm border border-ember bg-white text-sm font-black text-ink">
               R21
             </span>
             <span>
@@ -37,12 +37,12 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-gold">
+          <p className="text-sm font-black uppercase tracking-[0.2em] text-ember">
             Contactos
           </p>
           <a
             href={siteConfig.contacts.whatsappUrl}
-            className="mt-4 block text-sm font-black text-white hover:text-gold"
+            className="mt-4 block text-sm font-black text-white hover:text-ember"
             target="_blank"
             rel="noreferrer"
           >

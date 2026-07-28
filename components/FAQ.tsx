@@ -11,7 +11,7 @@ export function FAQ() {
           text="Respostas diretas para reduzir dúvidas e ajudar novos alunos a tomar a primeira decisão."
           tone="light"
         />
-        <div className="mt-12 grid gap-3 lg:grid-cols-2">
+        <div className="mt-12 grid items-start gap-3 lg:grid-cols-2">
           {siteConfig.faqs.map((faq) => (
             <details key={faq.question} className="card-light p-5">
               <summary className="cursor-pointer text-base font-black marker:text-ember">

@@ -43,7 +43,7 @@ export function InstagramSection() {
                 sizes="(min-width: 1024px) 58vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-              <div className="absolute left-5 top-5 rounded-sm border border-white/20 bg-black/60 px-3 py-2 text-xs font-black uppercase tracking-[0.2em] text-gold backdrop-blur">
+              <div className="absolute left-5 top-5 rounded-sm border border-white/20 bg-black/60 px-3 py-2 text-xs font-black uppercase tracking-[0.2em] text-ember backdrop-blur">
                 {featured.type}
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
@@ -74,7 +74,7 @@ export function InstagramSection() {
                   sizes="(min-width: 1024px) 38vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-                <div className="absolute left-4 top-4 rounded-sm border border-white/20 bg-black/60 px-2.5 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-gold backdrop-blur">
+                <div className="absolute left-4 top-4 rounded-sm border border-white/20 bg-black/60 px-2.5 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-ember backdrop-blur">
                   {secondary.type}
                 </div>
                 <div className="absolute bottom-4 left-4 right-4">
@@ -89,7 +89,7 @@ export function InstagramSection() {
             </a>
 
             <div className="card-dark p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-gold">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-ember">
                 Professores no Instagram
               </p>
               <div className="mt-4 grid gap-2">
@@ -99,7 +99,7 @@ export function InstagramSection() {
                     href={profile.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between gap-3 rounded-sm border border-white/10 bg-white/[0.04] px-4 py-3 transition hover:border-gold/50"
+                    className="flex items-center justify-between gap-3 rounded-sm border border-white/10 bg-white/[0.04] px-4 py-3 transition hover:border-ember/50"
                   >
                     <span className="text-sm font-black text-white">
                       {profile.name}

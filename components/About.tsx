@@ -35,7 +35,7 @@ export function About() {
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-gold">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-ember">
                 Equipa técnica
               </p>
               <p className="mt-2 text-xl font-black text-white">

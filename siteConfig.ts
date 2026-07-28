@@ -77,7 +77,7 @@ export const siteConfig = {
     location: "Odivelas · Lisboa",
     title: "Jiu-Jitsu Brasileiro em Odivelas",
     subtitle:
-      "Na Rio21 Lisboa treinas técnica, disciplina e confiança num tatame preparado para todos os níveis — do primeiro treino à competição.",
+      "Na Rio21 Lisboa treinas técnica, disciplina e confiança num tatame preparado para todos os níveis, do primeiro treino à competição.",
     highlights: [
       "Seg a Sáb · 07h00 – 21h30",
       "Kids · Adolescentes · Adultos",
@@ -133,7 +133,7 @@ export const siteConfig = {
       text:
         "Treinos técnicos para evoluir no detalhe: estratégia, intensidade e consistência para adolescentes e adultos de todos os níveis.",
       schedule: "Turmas de segunda a sábado",
-      image: "/images/classes/adultos.jpg",
+      image: "/images/classes/adultos.jpeg",
       imageAlt: "Treino de Jiu-Jitsu de adultos na Rio21 com equipa a assistir"
     },
     {
@@ -246,7 +246,7 @@ export const siteConfig = {
           day: "Terça",
           sessions: [
             { time: "07:00", title: "Iniciantes" },
-            { time: "12:00", title: "All Levels" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "13:00", title: "Sparring" },
             { time: "18:30", title: "Adolescentes" },
             { time: "19:30", title: "Iniciantes" },
@@ -281,18 +281,18 @@ export const siteConfig = {
         {
           day: "Sexta",
           sessions: [
-            { time: "07:00", title: "All Levels" },
+            { time: "07:00", title: "Todos os níveis" },
             { time: "08:00", title: "Sparring" },
-            { time: "12:00", title: "All Levels" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "13:00", title: "Sparring" },
-            { time: "19:30", title: "All Levels" },
+            { time: "19:30", title: "Todos os níveis" },
             { time: "20:30", title: "Sparring" }
           ]
         },
         {
           day: "Sábado",
           sessions: [
-            { time: "10:00", title: "All Levels" },
+            { time: "10:00", title: "Todos os níveis" },
             { time: "11:00", title: "Sparring" }
           ]
         }
@@ -307,21 +307,21 @@ export const siteConfig = {
         {
           day: "Segunda",
           sessions: [
-            { time: "09:00", title: "All Levels" },
-            { time: "12:00", title: "All Levels" },
+            { time: "09:00", title: "Todos os níveis" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "18:00", title: "Kids & Adolescentes" },
-            { time: "19:15", title: "All Levels" },
+            { time: "19:15", title: "Todos os níveis" },
             { time: "20:15", title: "Avançados" }
           ]
         },
         {
           day: "Terça",
           sessions: [
-            { time: "09:00", title: "All Levels" },
-            { time: "12:00", title: "All Levels" },
+            { time: "09:00", title: "Todos os níveis" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "17:00", title: "Mini Kids" },
             { time: "18:00", title: "Kids & Adolescentes" },
-            { time: "19:15", title: "All Levels" },
+            { time: "19:15", title: "Todos os níveis" },
             { time: "20:15", title: "Avançados" }
           ]
         },
@@ -330,28 +330,28 @@ export const siteConfig = {
           sessions: [
             { time: "09:00", title: "No-Gi" },
             { time: "12:00", title: "No-Gi" },
-            { time: "19:15", title: "All Levels" },
+            { time: "19:15", title: "Todos os níveis" },
             { time: "20:15", title: "No-Gi" }
           ]
         },
         {
           day: "Quinta",
           sessions: [
-            { time: "09:00", title: "All Levels" },
-            { time: "12:00", title: "All Levels" },
+            { time: "09:00", title: "Todos os níveis" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "17:00", title: "Mini Kids" },
             { time: "18:00", title: "Kids & Adolescentes" },
-            { time: "19:15", title: "All Levels" },
-            { time: "20:15", title: "All Levels" }
+            { time: "19:15", title: "Todos os níveis" },
+            { time: "20:15", title: "Todos os níveis" }
           ]
         },
         {
           day: "Sexta",
           sessions: [
-            { time: "09:00", title: "All Levels" },
-            { time: "12:00", title: "All Levels" },
+            { time: "09:00", title: "Todos os níveis" },
+            { time: "12:00", title: "Todos os níveis" },
             { time: "18:00", title: "Kids & Adolescentes" },
-            { time: "19:15", title: "All Levels" },
+            { time: "19:15", title: "Todos os níveis" },
             { time: "20:15", title: "Avançados" }
           ]
         },
@@ -359,7 +359,7 @@ export const siteConfig = {
           day: "Sábado",
           sessions: [
             { time: "09:00", title: "Kids & Adolescentes" },
-            { time: "10:00", title: "All Levels" }
+            { time: "10:00", title: "Todos os níveis" }
           ]
         }
       ]
@@ -410,7 +410,7 @@ export const siteConfig = {
     }
   ],
   trial: {
-    title: "Experimenta uma aula gratuita",
+    title: "Marca a tua primeira aula no tatame",
     text:
       "A melhor forma de conhecer a Rio21 é pisar o tatame. Marca a tua primeira aula experimental gratuita em Odivelas ou na filial de Vila Franca de Xira.",
     objections: [
@@ -436,7 +436,7 @@ export const siteConfig = {
     },
     {
       src: "/images/gallery/treino-01.jpg",
-      alt: "Professor a supervisionar rolls no treino da Rio21",
+      alt: "Professor a supervisionar rolamentos no treino da Rio21",
       category: "Treino adultos"
     },
     {
@@ -529,9 +529,9 @@ export const siteConfig = {
     }
   },
   testimonials: {
-    title: "O que vais encontrar no tatame",
+    title: "O que dizem os nossos alunos",
     text:
-      "A experiência de quem começa a treinar connosco, seja no primeiro mês ou na preparação para competir.",
+      "Depoimentos de quem treina na Rio21, do primeiro treino à preparação para competir.",
     items: [
       "Comecei sem experiência e senti-me acompanhado desde o primeiro treino.",
       "O meu filho ganhou mais confiança, foco e disciplina.",

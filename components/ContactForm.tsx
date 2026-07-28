@@ -149,7 +149,7 @@ export function ContactForm() {
       </button>
 
       {submitted ? (
-        <p className="rounded-sm border border-gold/40 bg-gold/10 px-3 py-3 text-sm font-bold text-gold">
+        <p className="rounded-sm border border-ember/40 bg-ember/10 px-3 py-3 text-sm font-bold text-ember">
           O WhatsApp foi aberto com os dados preenchidos. Se não abriu,{" "}
           <a
             href={siteConfig.contacts.whatsappUrl}

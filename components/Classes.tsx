@@ -37,7 +37,7 @@ export function Classes() {
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="absolute left-4 top-4 rounded-sm bg-ink/85 px-2.5 py-1.5 text-xs font-black text-gold">
+                <span className="absolute left-4 top-4 rounded-sm bg-ink/85 px-2.5 py-1.5 text-xs font-black text-ember">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="absolute bottom-4 left-4 right-4 text-2xl font-black text-white">

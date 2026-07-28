@@ -28,7 +28,7 @@ export function Benefits() {
           {siteConfig.benefits.items.map((benefit) => (
             <div key={benefit.title} className="card-dark flex flex-col p-5">
               <span
-                className="grid h-12 w-12 place-items-center rounded-sm border border-gold/50 bg-gold/10 text-gold"
+                className="grid h-12 w-12 place-items-center rounded-sm border border-ember/50 bg-ember/10 text-ember"
                 aria-hidden="true"
               >
                 <svg

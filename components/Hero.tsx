@@ -48,8 +48,8 @@ export function Hero() {
               {siteConfig.ctas.secondary}
             </a>
           </div>
-          <p className="mt-6 max-w-xl border-l-2 border-gold pl-4 text-sm font-bold uppercase tracking-wide text-neutral-300">
-            {siteConfig.slogan} Sede em Odivelas · Filial em Vila Franca de Xira
+          <p className="mt-6 max-w-xl border-l-2 border-ember pl-4 text-sm font-bold uppercase tracking-wide text-neutral-300">
+            {siteConfig.slogan}
           </p>
         </div>
       </div>

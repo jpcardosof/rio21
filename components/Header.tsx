@@ -15,7 +15,7 @@ export function Header() {
             className="flex items-center gap-3 text-white"
             aria-label="Ir para o início da Rio21 BJJ"
           >
-            <span className="grid h-11 w-11 place-items-center rounded-sm border border-gold bg-white text-sm font-black text-ink">
+            <span className="grid h-11 w-11 place-items-center rounded-sm border border-ember bg-white text-sm font-black text-ink">
               R21
             </span>
             <span className="leading-none">

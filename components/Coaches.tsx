@@ -40,7 +40,7 @@ function MemberCard({
   return (
     <article
       className={`group overflow-hidden rounded-lg border bg-white shadow-sm ${
-        featured ? "border-gold/45" : "border-black/10"
+        featured ? "border-ember/45" : "border-black/10"
       }`}
     >
       <div
@@ -103,7 +103,7 @@ function TierLabel({
 function TierConnector() {
   return (
     <div aria-hidden="true" className="mx-auto flex h-12 w-24 items-center justify-center">
-      <span className="h-full w-px bg-gradient-to-b from-gold via-ember to-steel" />
+      <span className="h-full w-px bg-gradient-to-b from-ember via-ember/40 to-steel" />
     </div>
   );
 }
@@ -116,7 +116,7 @@ export function Coaches() {
       id="professores"
       className="relative overflow-hidden bg-paper py-20 text-ink sm:py-24"
     >
-      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#c1121f,#c9a227,#174c72)]" />
+      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#c1121f,#7a0c14,#24272d)]" />
       <div className="section-shell relative">
         <SectionIntro
           eyebrow="A nossa equipa"

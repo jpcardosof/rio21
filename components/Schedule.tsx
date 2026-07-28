@@ -7,7 +7,7 @@ type UnitSchedule =
 
 function sessionStyle(title: string) {
   if (title.includes("Kids") || title === "Adolescentes") {
-    return "border-gold/45 bg-gold/10 text-yellow-950";
+    return "border-neutral-300 bg-neutral-100 text-neutral-900";
   }
 
   if (title === "Sparring") {
@@ -31,7 +31,7 @@ function ScheduleCard({ unit }: { unit: UnitSchedule }) {
       <div className="flex flex-col gap-4 bg-ink px-5 py-5 text-white sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
           <div className="flex items-center gap-3">
-            <span className="rounded-sm border border-gold/60 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-gold">
+            <span className="rounded-sm border border-ember/60 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-ember">
               {unit.badge}
             </span>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-neutral-400">
@@ -98,13 +98,13 @@ export function Schedule() {
         <SectionIntro
           eyebrow="Horários"
           title="Encontra o teu horário de treino"
-          text="Consulta a programação semanal completa de Odivelas e Vila Franca de Xira."
+          text="Consulta a programação semanal completa da sede em Odivelas."
           tone="light"
         />
 
         <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-black uppercase tracking-[0.14em] text-neutral-600 sm:mt-10">
           <span className="flex items-center gap-2">
-            <i className="h-2.5 w-2.5 rounded-sm bg-gold/40" /> Kids e adolescentes
+            <i className="h-2.5 w-2.5 rounded-sm bg-neutral-400" /> Kids e adolescentes
           </span>
           <span className="flex items-center gap-2">
             <i className="h-2.5 w-2.5 rounded-sm bg-ember/30" /> Sparring
@@ -119,7 +119,6 @@ export function Schedule() {
 
         <div className="mt-6 grid gap-8">
           <ScheduleCard unit={siteConfig.schedule.odivelas} />
-          <ScheduleCard unit={siteConfig.schedule.vilaFrancaXira} />
         </div>
 
         <p className="mt-6 border-l-2 border-ember pl-4 text-sm font-bold text-neutral-700">

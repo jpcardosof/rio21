@@ -14,10 +14,10 @@ export function Testimonials() {
           {siteConfig.testimonials.items.map((testimonial) => (
             <blockquote
               key={testimonial}
-              className="card-dark flex items-start gap-4 border-l-4 border-l-gold p-6"
+              className="card-dark flex items-start gap-4 border-l-4 border-l-ember p-6"
             >
               <span
-                className="mt-1 text-3xl font-black leading-none text-gold"
+                className="mt-1 text-3xl font-black leading-none text-ember"
                 aria-hidden="true"
               >
                 “

@@ -37,11 +37,11 @@ export function Filiais() {
                   sizes="(min-width: 1024px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                <span className="absolute left-4 top-4 rounded-sm border border-gold/60 bg-black/70 px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-gold backdrop-blur">
+                <span className="absolute left-4 top-4 rounded-sm border border-ember/60 bg-black/70 px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-ember backdrop-blur">
                   {pole.role}
                 </span>
                 <div className="absolute bottom-4 left-5 right-5">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-gold">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-ember">
                     {pole.location}
                   </p>
                   <h3 className="mt-2 text-2xl font-black text-white sm:text-3xl">
