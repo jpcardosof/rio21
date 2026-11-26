@@ -1,78 +1,60 @@
+import { Logo } from "@/components/Logo";
+import { ArrowUpRightIcon } from "@/components/icons";
+import type { Dictionary } from "@/content/types";
 import { siteConfig } from "@/siteConfig";
 
-export function Footer() {
+type FooterProps = {
+  footer: Dictionary["footer"];
+  nav: Dictionary["nav"];
+};
+
+export function Footer({ footer, nav }: FooterProps) {
+  const year = new Date().getFullYear();
+  const linkClass = "inline-flex min-h-11 items-center gap-1.5 text-muted transition-colors hover:text-fg";
+
   return (
-    <footer className="border-t border-white/10 bg-black py-12 text-white">
-      <div className="section-shell grid gap-10 lg:grid-cols-[1fr_1.6fr_1fr]">
-        <div>
-          <a href="#inicio" className="inline-flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-sm border border-ember bg-white text-sm font-black text-ink">
-              R21
-            </span>
-            <span>
-              <span className="block text-sm font-black uppercase tracking-[0.22em]">
-                Rio21 BJJ
-              </span>
-              <span className="block text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">
-                Odivelas · Lisboa
-              </span>
-            </span>
-          </a>
-          <p className="mt-5 max-w-xs leading-7 text-neutral-400">
-            Escola de Jiu-Jitsu Brasileiro em Odivelas, com filial em Vila
-            Franca de Xira. {siteConfig.slogan}
-          </p>
-        </div>
-
-        <nav className="grid gap-2 sm:grid-cols-2" aria-label="Links do rodapé">
-          {siteConfig.navigation.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-bold uppercase tracking-wide text-neutral-300 hover:text-white"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div>
-          <p className="text-sm font-black uppercase tracking-[0.2em] text-ember">
-            Contactos
-          </p>
-          <a
-            href={siteConfig.contacts.whatsappUrl}
-            className="mt-4 block text-sm font-black text-white hover:text-ember"
-            target="_blank"
-            rel="noreferrer"
-          >
-            WhatsApp · {siteConfig.contacts.whatsappDisplay}
-          </a>
-          <a
-            href={`mailto:${siteConfig.contacts.email}`}
-            className="mt-2 block text-sm text-neutral-300 hover:text-white"
-          >
-            {siteConfig.contacts.email}
-          </a>
-          <div className="mt-5 grid gap-2">
-            {siteConfig.social.instagram.map((profile) => (
-              <a
-                key={profile.handle}
-                href={profile.url}
-                className="text-sm text-neutral-300 hover:text-white"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {profile.handle}
-              </a>
-            ))}
+    <footer className="pb-28 lg:pb-10">
+      <div className="shell">
+        <div className="card grid gap-12 px-7 py-12 sm:px-10 lg:grid-cols-12 lg:px-14 lg:py-14">
+          <div className="lg:col-span-6">
+            <Logo className="h-11 text-fg" />
+            <p className="display mt-7 text-2xl sm:text-3xl">{footer.slogan}</p>
           </div>
+
+          <nav aria-label="Footer" className="lg:col-span-3 lg:col-start-8">
+            <ul className="grid">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className={linkClass}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <ul className="grid content-start lg:col-span-2">
+            <li>
+              <a href={siteConfig.contacts.instagram} target="_blank" rel="noreferrer" className={linkClass}>
+                Instagram <ArrowUpRightIcon className="h-3.5 w-3.5" />
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${siteConfig.contacts.email}`} className={linkClass}>
+                Email
+              </a>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div className="section-shell mt-10 border-t border-white/10 pt-6">
-        <p className="text-sm text-neutral-500">
-          © Rio21 BJJ. Todos os direitos reservados.
-        </p>
+
+        <div className="flex flex-col gap-2 px-2 pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {siteConfig.name}. {footer.rights}
+          </p>
+          <a href="#inicio" className="inline-flex min-h-11 items-center transition-colors hover:text-fg">
+            {footer.backToTop} ↑
+          </a>
+        </div>
       </div>
     </footer>
   );

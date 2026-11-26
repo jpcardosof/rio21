@@ -1,129 +1,171 @@
-import { SectionIntro } from "@/components/SectionIntro";
-import { siteConfig } from "@/siteConfig";
+"use client";
 
-type UnitSchedule =
-  | typeof siteConfig.schedule.odivelas
-  | typeof siteConfig.schedule.vilaFrancaXira;
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { SectionLabel } from "@/components/SectionLabel";
+import { WhatsAppIcon } from "@/components/icons";
+import type { Dictionary } from "@/content/types";
+import { beginnerFriendly, siteConfig, type SessionType } from "@/siteConfig";
 
-function sessionStyle(title: string) {
-  if (title.includes("Kids") || title === "Adolescentes") {
-    return "border-neutral-300 bg-neutral-100 text-neutral-900";
-  }
+type ScheduleProps = {
+  schedule: Dictionary["schedule"];
+  ctaLabel: string;
+  whatsappHref: string;
+};
 
-  if (title === "Sparring") {
-    return "border-ember/35 bg-ember/10 text-red-950";
-  }
-
-  if (title === "No-Gi") {
-    return "border-steel/35 bg-steel/10 text-slate-950";
-  }
-
-  if (title === "Avançados") {
-    return "border-neutral-800 bg-neutral-900 text-white";
-  }
-
-  return "border-black/10 bg-white text-ink";
+function Dot() {
+  return <span aria-hidden="true" className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent ring-1 ring-fg/10" />;
 }
 
-function ScheduleCard({ unit }: { unit: UnitSchedule }) {
+export function Schedule({ schedule, ctaLabel, whatsappHref }: ScheduleProps) {
+  const days = siteConfig.timetable;
+  const [active, setActive] = useState(0);
+  const [today, setToday] = useState<number | null>(null);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Abre no dia de hoje (domingo → segunda). Feito após montar para evitar diferenças de hidratação.
+  useEffect(() => {
+    const weekday = new Date().getDay();
+    if (weekday === 0) return;
+    setActive(weekday - 1);
+    setToday(weekday - 1);
+  }, []);
+
+  function onTabKey(event: KeyboardEvent<HTMLButtonElement>) {
+    const last = days.length - 1;
+    const next =
+      event.key === "ArrowRight" ? (active === last ? 0 : active + 1)
+      : event.key === "ArrowLeft" ? (active === 0 ? last : active - 1)
+      : event.key === "Home" ? 0
+      : event.key === "End" ? last
+      : null;
+    if (next === null) return;
+    event.preventDefault();
+    setActive(next);
+    tabs.current[next]?.focus();
+  }
+
+  const isBeginner = (type: SessionType) => beginnerFriendly.includes(type);
+
   return (
-    <article className="overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm">
-      <div className="flex flex-col gap-4 bg-ink px-5 py-5 text-white sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <div>
-          <div className="flex items-center gap-3">
-            <span className="rounded-sm border border-ember/60 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-ember">
-              {unit.badge}
-            </span>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-neutral-400">
-              {unit.days}
+    <section id="horario" aria-labelledby="horario-titulo" className="py-24 lg:py-32">
+      <div className="shell">
+        <div data-reveal className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <SectionLabel>{schedule.eyebrow}</SectionLabel>
+            <h2 id="horario-titulo" className="title-section mt-5">
+              {schedule.title}
+            </h2>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <p className="max-w-md text-lg text-muted">{schedule.intro}</p>
+            <p className="mt-4 flex items-center gap-2.5 text-sm font-semibold">
+              <Dot />
+              {schedule.legend}
             </p>
           </div>
-          <h3 className="mt-3 text-2xl font-black sm:text-3xl">{unit.title}</h3>
         </div>
-        <div className="border-l-2 border-ember pl-3 sm:text-right">
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-neutral-400">
-            Faixa horária
-          </p>
-          <p className="mt-1 font-black text-white">{unit.hours}</p>
-        </div>
-      </div>
 
-      <div className="border-b border-black/10 bg-neutral-50 px-5 py-3 sm:hidden">
-        <p className="text-xs font-bold text-neutral-600">
-          Desliza para o lado para consultar todos os dias →
-        </p>
-      </div>
+        {/* Telemóvel e tablet: um dia de cada vez */}
+        <div data-reveal className="mt-12 lg:hidden">
+          <div role="tablist" aria-label={schedule.tablistLabel} className="grid grid-cols-6 gap-1 rounded-full bg-surface p-1">
+            {days.map((_, dayIndex) => {
+              const selected = dayIndex === active;
+              return (
+                <button
+                  key={dayIndex}
+                  ref={(element) => {
+                    tabs.current[dayIndex] = element;
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`dia-${dayIndex}`}
+                  aria-selected={selected}
+                  aria-controls="dia-painel"
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => setActive(dayIndex)}
+                  onKeyDown={onTabKey}
+                  className={`relative flex h-11 items-center justify-center rounded-full text-sm font-semibold transition-all duration-300 ${
+                    selected ? "bg-bg text-fg shadow-soft" : "text-muted hover:text-fg"
+                  }`}
+                >
+                  <span aria-hidden="true">{schedule.daysShort[dayIndex]}</span>
+                  <span className="sr-only">{schedule.days[dayIndex]}</span>
+                  {today === dayIndex && (
+                    <span aria-hidden="true" className="absolute bottom-1.5 h-1 w-1 rounded-full bg-current" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
 
-      <div className="overflow-x-auto">
-        <div className="grid min-w-[920px] grid-cols-6">
-          {unit.timetable.map((day, dayIndex) => (
-            <section
-              key={day.day}
-              className={`min-h-[31rem] ${
-                dayIndex > 0 ? "border-l border-black/10" : ""
-              }`}
-            >
-              <h4 className="border-b border-black/10 bg-neutral-100 px-3 py-3 text-center text-xs font-black uppercase tracking-[0.16em] text-ink">
-                {day.day}
-              </h4>
-              <div className="grid gap-2 p-2.5">
-                {day.sessions.map((session) => (
-                  <div
-                    key={`${day.day}-${session.time}-${session.title}`}
-                    className={`rounded-md border px-2.5 py-2.5 text-center ${sessionStyle(
-                      session.title
-                    )}`}
-                  >
-                    <time className="block text-lg font-black leading-none">
-                      {session.time}
-                    </time>
-                    <span className="mt-1.5 block text-[10px] font-black uppercase leading-tight tracking-wide">
-                      {session.title}
+          <div role="tabpanel" id="dia-painel" aria-labelledby={`dia-${active}`} tabIndex={0} className="mt-6">
+            <p className="eyebrow px-1">
+              {schedule.days[active]}
+              {today === active && ` · ${schedule.today}`}
+            </p>
+            <ul key={active} className="fade-in mt-3 grid gap-2">
+              {days[active].map(([time, type]) => (
+                <li key={`${time}-${type}`} className="card flex items-center gap-5 rounded-2xl px-5 py-4">
+                  <time className="w-14 shrink-0 text-lg font-semibold tabular-nums">{time}</time>
+                  <span className="flex-1">{schedule.sessions[type]}</span>
+                  {isBeginner(type) && (
+                    <span className="flex items-center gap-2 text-xs font-semibold text-muted">
+                      <Dot />
+                      <span className="hidden sm:inline">{schedule.beginnerTag}</span>
+                      <span className="sr-only sm:hidden">{schedule.beginnerTag}</span>
                     </span>
-                  </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Desktop: semana completa */}
+        <div data-reveal className="mt-16 hidden grid-cols-6 gap-2 rounded-[2rem] bg-surface p-2 lg:grid">
+          {days.map((sessions, dayIndex) => (
+            <div
+              key={dayIndex}
+              className={`rounded-3xl p-1.5 transition-colors duration-500 ${today === dayIndex ? "bg-accent/25 dark:bg-accent/10" : ""}`}
+            >
+              <h3 className="flex h-12 items-center justify-between px-3 text-sm font-semibold">
+                {schedule.days[dayIndex]}
+                {today === dayIndex && (
+                  <span className="rounded-full bg-accent px-2.5 text-[11px] font-semibold leading-6 text-accent-fg">
+                    {schedule.today}
+                  </span>
+                )}
+              </h3>
+              <ul className="grid gap-1.5">
+                {sessions.map(([time, type]) => (
+                  <li
+                    key={`${time}-${type}`}
+                    className="rounded-2xl bg-bg px-4 py-3.5 transition-transform duration-300 ease-soft hover:-translate-y-0.5"
+                  >
+                    <time className="block font-semibold tabular-nums">{time}</time>
+                    <span className="mt-0.5 flex items-center gap-2 text-sm text-muted">
+                      {schedule.sessions[type]}
+                      {isBeginner(type) && (
+                        <>
+                          <Dot />
+                          <span className="sr-only">{schedule.beginnerTag}</span>
+                        </>
+                      )}
+                    </span>
+                  </li>
                 ))}
-              </div>
-            </section>
+              </ul>
+            </div>
           ))}
         </div>
-      </div>
-    </article>
-  );
-}
 
-export function Schedule() {
-  return (
-    <section id="horarios" className="bg-paper py-20 text-ink sm:py-24">
-      <div className="section-shell">
-        <SectionIntro
-          eyebrow="Horários"
-          title="Encontra o teu horário de treino"
-          text="Consulta a programação semanal completa da sede em Odivelas."
-          tone="light"
-        />
-
-        <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-black uppercase tracking-[0.14em] text-neutral-600 sm:mt-10">
-          <span className="flex items-center gap-2">
-            <i className="h-2.5 w-2.5 rounded-sm bg-neutral-400" /> Kids e adolescentes
-          </span>
-          <span className="flex items-center gap-2">
-            <i className="h-2.5 w-2.5 rounded-sm bg-ember/30" /> Sparring
-          </span>
-          <span className="flex items-center gap-2">
-            <i className="h-2.5 w-2.5 rounded-sm bg-steel/30" /> No-Gi
-          </span>
-          <span className="flex items-center gap-2">
-            <i className="h-2.5 w-2.5 rounded-sm bg-neutral-900" /> Avançados
-          </span>
+        <div data-reveal className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-lg text-sm text-muted">{schedule.note}</p>
+          <a href={whatsappHref} target="_blank" rel="noreferrer" className="btn-primary min-h-14 shrink-0 px-7">
+            <WhatsAppIcon />
+            {ctaLabel}
+          </a>
         </div>
-
-        <div className="mt-6 grid gap-8">
-          <ScheduleCard unit={siteConfig.schedule.odivelas} />
-        </div>
-
-        <p className="mt-6 border-l-2 border-ember pl-4 text-sm font-bold text-neutral-700">
-          {siteConfig.schedule.note}
-        </p>
       </div>
     </section>
   );

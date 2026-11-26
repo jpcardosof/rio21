@@ -1,49 +1,51 @@
 import Image from "next/image";
-import { SectionIntro } from "@/components/SectionIntro";
+import { SectionLabel } from "@/components/SectionLabel";
+import { delay } from "@/components/motion";
+import type { Dictionary } from "@/content/types";
 import { siteConfig } from "@/siteConfig";
 
-export function About() {
+export function About({ about }: { about: Dictionary["about"] }) {
+  const image = siteConfig.images.about;
+
   return (
-    <section id="sobre" className="bg-paper py-20 text-ink sm:py-24">
-      <div className="section-shell grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div>
-          <SectionIntro
-            eyebrow="Sobre a Rio21"
-            title={siteConfig.about.title}
-            text={siteConfig.about.text}
-            tone="light"
-          />
-          <div className="mt-10 grid gap-3 sm:grid-cols-3">
-            {siteConfig.about.values.map((value) => (
-              <div
+    <section id="sobre" aria-labelledby="sobre-titulo" className="py-24 lg:py-32">
+      <div className="shell grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+        <div data-reveal className="lg:col-span-6 lg:col-start-7 lg:row-start-1">
+          <SectionLabel>{about.eyebrow}</SectionLabel>
+          <h2 id="sobre-titulo" className="title-section mt-5">
+            {about.title}
+          </h2>
+          {about.text.map((paragraph) => (
+            <p key={paragraph} className="mt-6 max-w-xl text-lg text-muted">
+              {paragraph}
+            </p>
+          ))}
+          <ul className="mt-10 flex flex-wrap gap-2">
+            {about.values.map((value, index) => (
+              <li
                 key={value}
-                className="card-light p-5 shadow-sm transition hover:-translate-y-1 hover:border-ember/40"
+                data-reveal
+                style={delay(200 + index * 70)}
+                className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-semibold"
               >
-                <p className="text-lg font-black">{value}</p>
-                <span className="mt-4 block h-1 w-10 bg-ember" />
-              </div>
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent ring-1 ring-fg/10" />
+                {value}
+              </li>
             ))}
+          </ul>
+        </div>
+
+        <div data-reveal className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
+          <div className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-surface">
+            <Image
+              src={image.src}
+              alt={about.imageAlt}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover grayscale transition-[filter,transform] duration-700 ease-soft group-hover:scale-[1.03] group-hover:grayscale-0"
+            />
           </div>
         </div>
-        <figure className="card-light martial-panel relative overflow-hidden">
-          <div className="relative aspect-[3/4]">
-            <Image
-              src={siteConfig.about.image}
-              alt={siteConfig.about.imageAlt}
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 40vw, 100vw"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-ember">
-                Equipa técnica
-              </p>
-              <p className="mt-2 text-xl font-black text-white">
-                {siteConfig.slogan}
-              </p>
-            </div>
-          </div>
-        </figure>
       </div>
     </section>
   );

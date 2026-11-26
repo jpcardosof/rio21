@@ -1,60 +1,84 @@
 import Image from "next/image";
-import { SectionIntro } from "@/components/SectionIntro";
+import { SectionLabel } from "@/components/SectionLabel";
+import { WhatsAppIcon } from "@/components/icons";
+import { delay } from "@/components/motion";
+import type { Dictionary } from "@/content/types";
 import { siteConfig } from "@/siteConfig";
 
-export function Classes() {
+type ClassesProps = {
+  classes: Dictionary["classes"];
+  ctaLabel: string;
+  whatsappHref: string;
+};
+
+type Cell =
+  | { kind: "class"; number: number; title: string; text: string; meta: string }
+  | { kind: "photo"; src: string; alt: string; position: string };
+
+export function Classes({ classes, ctaLabel, whatsappHref }: ClassesProps) {
+  const photos: Cell[] = [
+    { kind: "photo", src: siteConfig.images.adults.src, alt: classes.images.adults, position: "object-[50%_40%]" },
+    { kind: "photo", src: siteConfig.images.kids.src, alt: classes.images.kids, position: "object-center" }
+  ];
+  const items: Cell[] = classes.items.map((item, index) => ({ kind: "class", number: index + 1, ...item }));
+
+  // Mosaico 3×3 no desktop: 7 turmas + 2 fotos (2.ª posição e 7.ª posição).
+  const cells: Cell[] = [items[0], photos[0], ...items.slice(1, 5), photos[1], ...items.slice(5)];
+
   return (
-    <section id="aulas" className="bg-paper py-20 text-ink sm:py-24">
-      <div className="section-shell">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionIntro
-            eyebrow="Aulas em Odivelas"
-            title="Treinos para cada fase da tua jornada"
-            text="Começa do zero, treina em família ou prepara-te para competir — sempre com acompanhamento técnico."
-            tone="light"
-          />
-          <a
-            href={siteConfig.contacts.whatsappUrl}
-            className="button-dark w-full lg:w-auto"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {siteConfig.ctas.primary}
-          </a>
+    <section id="aulas" aria-labelledby="aulas-titulo" className="py-24 lg:py-32">
+      <div className="shell">
+        <div data-reveal className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <SectionLabel>{classes.eyebrow}</SectionLabel>
+            <h2 id="aulas-titulo" className="title-section mt-5">
+              {classes.title}
+            </h2>
+          </div>
+          <p className="max-w-md text-lg text-muted lg:col-span-4 lg:col-start-9">{classes.intro}</p>
         </div>
-        <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {siteConfig.classes.map((trainingClass, index) => (
-            <article
-              key={trainingClass.id}
-              className="card-light hover-lift group flex flex-col overflow-hidden"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-200">
+
+        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+          {cells.map((cell, index) =>
+            cell.kind === "photo" ? (
+              <li
+                key={cell.src}
+                data-reveal
+                style={delay((index % 3) * 100)}
+                className="group relative min-h-[18rem] overflow-hidden rounded-3xl bg-surface"
+              >
                 <Image
-                  src={trainingClass.image}
-                  alt={trainingClass.imageAlt}
+                  src={cell.src}
+                  alt={cell.alt}
                   fill
-                  className="image-zoom object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                  className={`object-cover grayscale transition-[filter,transform] duration-700 ease-soft group-hover:scale-[1.04] group-hover:grayscale-0 ${cell.position}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="absolute left-4 top-4 rounded-sm bg-ink/85 px-2.5 py-1.5 text-xs font-black text-ember">
-                  {String(index + 1).padStart(2, "0")}
+              </li>
+            ) : (
+              <li
+                key={cell.title}
+                data-reveal
+                style={delay((index % 3) * 100)}
+                className="card flex flex-col p-7 transition-[transform,box-shadow] duration-500 ease-soft hover:-translate-y-1 hover:shadow-soft lg:p-8"
+              >
+                <span className="text-sm font-semibold tabular-nums text-muted">
+                  {String(cell.number).padStart(2, "0")}
                 </span>
-                <h3 className="absolute bottom-4 left-4 right-4 text-2xl font-black text-white">
-                  {trainingClass.title}
-                </h3>
-              </div>
-              <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <p className="leading-7 text-neutral-700">
-                  {trainingClass.text}
-                </p>
-                <p className="mt-auto flex items-center gap-2 pt-5 text-xs font-black uppercase tracking-wide text-ember">
-                  <span className="h-1.5 w-1.5 rounded-full bg-ember" aria-hidden="true" />
-                  {trainingClass.schedule}
-                </p>
-              </div>
-            </article>
-          ))}
+                <h3 className="display mt-6 text-[1.75rem]">{cell.title}</h3>
+                <p className="mt-3 text-[15px] text-muted">{cell.text}</p>
+                <p className="mt-auto pt-7 text-xs font-semibold uppercase tracking-[0.14em]">{cell.meta}</p>
+              </li>
+            )
+          )}
+        </ul>
+
+        <div data-reveal className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-lg text-lg">{classes.footnote}</p>
+          <a href={whatsappHref} target="_blank" rel="noreferrer" className="btn-primary min-h-14 shrink-0 px-7">
+            <WhatsAppIcon />
+            {ctaLabel}
+          </a>
         </div>
       </div>
     </section>

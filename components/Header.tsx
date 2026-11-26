@@ -1,132 +1,140 @@
 "use client";
 
-import { useState } from "react";
-import { siteConfig } from "@/siteConfig";
+import { useEffect, useState } from "react";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { Logo } from "@/components/Logo";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ArrowIcon, WhatsAppIcon } from "@/components/icons";
+import { delay } from "@/components/motion";
+import type { Dictionary, Locale } from "@/content/types";
 
-export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+type HeaderProps = {
+  locale: Locale;
+  nav: Dictionary["nav"];
+  ui: Dictionary["ui"];
+  whatsappHref: string;
+};
+
+export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Cabeçalho transparente no topo; ganha fundo e linha suave ao fazer scroll.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const solid = scrolled || open;
 
   return (
-    <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur">
-        <div className="section-shell flex min-h-20 items-center justify-between gap-4">
-          <a
-            href="#inicio"
-            className="flex items-center gap-3 text-white"
-            aria-label="Ir para o início da Rio21 BJJ"
-          >
-            <span className="grid h-11 w-11 place-items-center rounded-sm border border-ember bg-white text-sm font-black text-ink">
-              R21
-            </span>
-            <span className="leading-none">
-              <span className="block text-sm font-black uppercase tracking-[0.22em]">
-                Rio21 BJJ
-              </span>
-              <span className="block text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">
-                Odivelas · Lisboa
-              </span>
-            </span>
-          </a>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        solid ? "border-line bg-bg/80 backdrop-blur-xl" : "border-transparent bg-transparent"
+      }`}
+    >
+      <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
+        <a href="#inicio" aria-label={ui.logoHome} className="text-fg" onClick={() => setOpen(false)}>
+          <Logo className="h-7 sm:h-8" />
+        </a>
 
-          <nav className="hidden items-center gap-5 lg:flex" aria-label="Menu principal">
-            {siteConfig.navigation.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-xs font-bold uppercase tracking-wide text-neutral-300 transition hover:text-white"
-              >
-                {item.label}
-              </a>
+        <nav aria-label="Menu" className="hidden lg:block">
+          <ul className="flex items-center gap-1">
+            {nav.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors duration-300 hover:bg-surface hover:text-fg"
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </nav>
+          </ul>
+        </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <a
-              href={siteConfig.contacts.whatsappUrl}
-              className="button-primary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp · Marcar aula
-            </a>
-          </div>
-
+        <div className="flex items-center gap-1 sm:gap-2">
+          <LanguageSwitch current={locale} label={ui.languageLabel} className="hidden sm:flex" />
+          <ThemeToggle label={ui.themeToggle} />
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary ml-1 hidden min-h-10 px-5 text-sm sm:inline-flex"
+          >
+            {ui.ctaShort}
+          </a>
           <button
             type="button"
-            aria-label="Abrir menu"
-            aria-expanded={isOpen}
-            onClick={() => setIsOpen((current) => !current)}
-            className="grid h-11 w-11 place-items-center rounded-sm border border-white/20 text-white lg:hidden"
+            aria-label={open ? ui.closeMenu : ui.openMenu}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            onClick={() => setOpen((value) => !value)}
+            className="grid h-11 w-11 place-items-center rounded-full transition-colors hover:bg-surface lg:hidden"
           >
-            <span className="relative block h-4 w-5">
+            <span className="relative block h-3 w-5" aria-hidden="true">
               <span
-                className={`absolute left-0 h-0.5 w-5 bg-current transition ${
-                  isOpen ? "top-2 rotate-45" : "top-0"
+                className={`absolute left-0 h-px w-5 bg-current transition-all duration-300 ${
+                  open ? "top-1.5 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute left-0 h-0.5 w-5 bg-current transition ${
-                  isOpen ? "top-2 -rotate-45" : "top-4"
+                className={`absolute left-0 h-px w-5 bg-current transition-all duration-300 ${
+                  open ? "top-1.5 -rotate-45" : "top-3"
                 }`}
               />
             </span>
           </button>
         </div>
+      </div>
 
-        {isOpen ? (
-          <nav className="border-t border-white/10 bg-ink px-4 py-4 lg:hidden">
-            <div className="mx-auto grid max-w-7xl gap-2">
-              {siteConfig.navigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="rounded-sm px-3 py-3 text-sm font-bold uppercase tracking-wide text-neutral-200 hover:bg-white/10"
-                >
-                  {item.label}
-                </a>
+      {open && (
+        <div id="menu-mobile" className="fade-in h-[calc(100dvh-var(--header-h))] overflow-y-auto bg-bg lg:hidden">
+          <nav aria-label="Menu" className="shell flex min-h-full flex-col py-6">
+            <ul>
+              {nav.map((item, index) => (
+                <li key={item.href} className="rise border-b border-line" style={delay(60 + index * 60)}>
+                  <a
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="display flex items-center justify-between py-5 text-4xl"
+                  >
+                    {item.label}
+                    <ArrowIcon className="h-5 w-5 text-muted" />
+                  </a>
+                </li>
               ))}
+            </ul>
+            <div className="rise mt-auto flex flex-col gap-5 pt-10" style={delay(400)}>
+              <LanguageSwitch current={locale} label={ui.languageLabel} />
               <a
-                href={siteConfig.contacts.whatsappUrl}
-                onClick={() => setIsOpen(false)}
-                className="button-primary mt-2"
+                href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => setOpen(false)}
+                className="btn-primary min-h-14 w-full"
               >
-                {siteConfig.ctas.primary}
+                <WhatsAppIcon />
+                {ui.ctaWhatsapp}
               </a>
             </div>
           </nav>
-        ) : null}
-      </header>
-
-      <a
-        href={siteConfig.contacts.whatsappUrl}
-        className="fixed bottom-4 right-4 z-50 grid h-14 w-14 place-items-center rounded-full bg-[#25d366] text-white shadow-xl md:hidden"
-        aria-label={`Contactar a Rio21 por WhatsApp em ${siteConfig.contacts.whatsappDisplay}`}
-        target="_blank"
-        rel="noreferrer"
-        title="WhatsApp"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z" />
-          <path d="M8.8 8.2c.3 2.9 2.2 4.8 5.1 5.1l1.1-1.1 2 .9c-.2 1.1-1.2 2-2.4 2-4.2-.1-7.6-3.5-7.7-7.7 0-1.2.9-2.2 2-2.4l.9 2-1 1.2Z" />
-        </svg>
-      </a>
-    </>
+        </div>
+      )}
+    </header>
   );
 }
