@@ -121,8 +121,8 @@ export const pt: Dictionary = {
     ],
     footnote: "Não sabes por onde começar? Diz-nos a tua idade e objetivo — indicamos a turma certa.",
     images: {
-      adults: "Treino de adultos na Rio21 em Odivelas",
-      kids: "Crianças a sorrir durante a aula de Jiu-Jitsu kids"
+      submission: "Atleta da Rio21 a finalizar a partir da guarda, no tatame da academia",
+      armlock: "Professor da Rio21 a acompanhar um armlock durante o treino"
     }
   },
   team: {

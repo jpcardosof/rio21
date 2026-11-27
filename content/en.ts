@@ -121,8 +121,8 @@ export const en: Dictionary = {
     ],
     footnote: "Not sure where to start? Tell us your age and goals — we'll point you to the right class.",
     images: {
-      adults: "Adult class training at Rio21 in Odivelas",
-      kids: "Children smiling during a kids Jiu-Jitsu class"
+      submission: "Rio21 athlete finishing a submission from guard on the academy mat",
+      armlock: "Rio21 coach watching an armlock during training"
     }
   },
   team: {

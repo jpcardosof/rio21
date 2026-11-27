@@ -17,8 +17,8 @@ type Cell =
 
 export function Classes({ classes, ctaLabel, whatsappHref }: ClassesProps) {
   const photos: Cell[] = [
-    { kind: "photo", src: siteConfig.images.adults.src, alt: classes.images.adults, position: "object-[50%_40%]" },
-    { kind: "photo", src: siteConfig.images.kids.src, alt: classes.images.kids, position: "object-center" }
+    { kind: "photo", src: siteConfig.images.submission.src, alt: classes.images.submission, position: "object-[50%_40%]" },
+    { kind: "photo", src: siteConfig.images.armlock.src, alt: classes.images.armlock, position: "object-[50%_60%]" }
   ];
   const items: Cell[] = classes.items.map((item, index) => ({ kind: "class", number: index + 1, ...item }));
 

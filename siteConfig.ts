@@ -56,10 +56,11 @@ export const siteConfig = {
     mapEmbedUrl: "https://www.google.com/maps?q=38.8117353,-9.1918799&z=17&output=embed"
   },
   images: {
-    hero: { src: "/images/hero/rio21-hero.jpg", width: 1024, height: 1535 },
-    about: { src: "/images/team/equipa-rio21.jpg", width: 1024, height: 1535 },
-    adults: { src: "/images/classes/adultos.jpeg", width: 1098, height: 1432 },
-    kids: { src: "/images/classes/kids.jpg", width: 1600, height: 1600 }
+    // As 4 fotos oficiais do site — cada uma usada num só sítio.
+    hero: { src: "/images/principal.jpeg", width: 1024, height: 1535 },
+    about: { src: "/images/luta.jpeg", width: 1024, height: 1535 },
+    submission: { src: "/images/submissao.jpeg", width: 1098, height: 1432 },
+    armlock: { src: "/images/armlock.jpeg", width: 1024, height: 1536 }
   },
   team: {
     founders: [

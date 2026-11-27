@@ -54,7 +54,7 @@ export type Dictionary = {
     intro: string;
     items: { title: string; text: string; meta: string }[];
     footnote: string;
-    images: { adults: string; kids: string };
+    images: { submission: string; armlock: string };
   };
   team: {
     eyebrow: string;
