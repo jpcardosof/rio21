@@ -43,11 +43,11 @@ export function Contact({ contact, ui, whatsappHref }: ContactProps) {
             {rows.map((row) => (
               <div key={row.label} className="flex items-center justify-between gap-6 border-b border-line py-3 first:border-t">
                 <dt className="eyebrow">{row.label}</dt>
-                <dd>
+                <dd className="text-right">
                   <a
                     href={row.href}
                     {...(row.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                    className="group inline-flex min-h-11 items-center gap-1.5 font-semibold transition-colors hover:text-muted"
+                    className="group inline-flex min-h-11 items-center gap-1.5 whitespace-pre-line font-semibold transition-colors hover:text-muted"
                   >
                     {row.value}
                     {row.external && (

@@ -7,6 +7,7 @@ export type SessionType =
   | "beginners"
   | "allLevels"
   | "advanced"
+  | "noGi"
   | "sparring"
   | "miniKids"
   | "kids"
@@ -15,25 +16,42 @@ export type SessionType =
 /** Turmas indicadas para quem vem à aula experimental. */
 export const beginnerFriendly: readonly SessionType[] = ["beginners", "allLevels"];
 
+/** Duração de cada turma, em minutos (tabela de horários oficial). */
+export const sessionMinutes: Record<SessionType, number> = {
+  beginners: 60,
+  allLevels: 60,
+  advanced: 60,
+  noGi: 60,
+  sparring: 30,
+  miniKids: 30,
+  kids: 50,
+  teens: 50
+};
+
 export const siteConfig = {
   name: "Rio21 BJJ",
   url: "https://rio21bjj.pt",
   logo: "/images/logotipo_png.png",
   logoBadge: "/images/logotipo.png",
   contacts: {
-    email: "contacto@rio21bjj.pt",
+    email: "geral@rio21lisboa.com",
     whatsapp: "351916995642",
     whatsappDisplay: "+351 916 995 642",
     instagram: "https://www.instagram.com/rio21.lisboa/",
     instagramHandle: "@rio21.lisboa",
     instagramDm: "https://ig.me/m/rio21.lisboa"
   },
+  /** Academia "RIO21 - Matriz Ramada" (link do Google Maps enviado pela academia). */
   location: {
+    streetAddress: "Avenida Amália Rodrigues 30, Ramada",
+    postalCode: "2620-521",
     locality: "Odivelas",
     region: "Lisboa",
     country: "PT",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rio21%20BJJ%20Odivelas",
-    mapEmbedUrl: "https://www.google.com/maps?q=Rio21%20BJJ%20Odivelas&output=embed"
+    latitude: 38.8117353,
+    longitude: -9.1918799,
+    mapsUrl: "https://maps.app.goo.gl/9pGGGg1uZsmHqShr7",
+    mapEmbedUrl: "https://www.google.com/maps?q=38.8117353,-9.1918799&z=17&output=embed"
   },
   images: {
     hero: { src: "/images/hero/rio21-hero.jpg", width: 1024, height: 1535 },
@@ -49,29 +67,11 @@ export const siteConfig = {
     professors: ["Robson Carvalho", "Appio Neto", "Carlos Tavares", "Kathe Paula"],
     instructors: ["Edder", "Matheus", "Ricardinho"]
   },
-  /** Horário semanal da academia de Odivelas (índice 0 = segunda-feira). */
+  /** Horário semanal da academia de Odivelas (índice 0 = segunda-feira). Fonte: tabela oficial de novembro de 2026. */
   timetable: [
     [
-      ["09:00", "advanced"],
-      ["10:00", "sparring"],
-      ["12:00", "beginners"],
-      ["18:00", "miniKids"],
-      ["18:30", "kids"],
-      ["19:30", "beginners"],
-      ["20:30", "beginners"]
-    ],
-    [
-      ["07:00", "beginners"],
-      ["12:00", "allLevels"],
-      ["13:00", "sparring"],
-      ["18:30", "teens"],
-      ["19:30", "beginners"],
-      ["20:30", "advanced"],
-      ["21:30", "sparring"]
-    ],
-    [
-      ["09:00", "advanced"],
-      ["10:00", "sparring"],
+      ["06:15", "allLevels"],
+      ["08:00", "advanced"],
       ["12:00", "beginners"],
       ["18:00", "miniKids"],
       ["18:30", "kids"],
@@ -79,7 +79,25 @@ export const siteConfig = {
       ["20:30", "beginners"]
     ],
     [
-      ["07:00", "beginners"],
+      ["06:15", "allLevels"],
+      ["12:00", "noGi"],
+      ["13:00", "sparring"],
+      ["18:30", "teens"],
+      ["19:30", "beginners"],
+      ["20:30", "advanced"],
+      ["21:30", "sparring"]
+    ],
+    [
+      ["06:15", "allLevels"],
+      ["08:00", "advanced"],
+      ["12:00", "beginners"],
+      ["18:00", "miniKids"],
+      ["18:30", "kids"],
+      ["19:30", "advanced"],
+      ["20:30", "beginners"]
+    ],
+    [
+      ["06:15", "allLevels"],
       ["12:00", "advanced"],
       ["13:00", "sparring"],
       ["18:30", "teens"],
@@ -88,10 +106,12 @@ export const siteConfig = {
       ["21:30", "sparring"]
     ],
     [
-      ["07:00", "allLevels"],
-      ["08:00", "sparring"],
+      ["06:15", "allLevels"],
+      ["07:30", "sparring"],
       ["12:00", "allLevels"],
       ["13:00", "sparring"],
+      ["18:00", "miniKids"],
+      ["18:30", "kids"],
       ["19:30", "allLevels"],
       ["20:30", "sparring"]
     ],

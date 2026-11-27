@@ -43,7 +43,7 @@ export const en: Dictionary = {
       "Technique, discipline and confidence on a mat built for every level — from your first session to competition.",
     secondaryCta: "See timetable",
     facts: [
-      { label: "Training", value: "Mon–Sat · 7am–9:30pm" },
+      { label: "Training", value: "Mon–Sat · 6:15am–10pm" },
       { label: "Groups", value: "Kids · Teens · Adults" },
       { label: "Experience", value: "Not required" }
     ],
@@ -86,7 +86,7 @@ export const en: Dictionary = {
       {
         title: "Kids & Mini Kids",
         text: "Coordination, respect and discipline through play. A safe place to grow with good values.",
-        meta: "Mini Kids Mon & Wed 6pm · Kids 6:30pm"
+        meta: "Mini Kids Mon, Wed & Fri 6pm · Kids 6:30pm"
       },
       {
         title: "Teens",
@@ -101,7 +101,7 @@ export const en: Dictionary = {
       {
         title: "Adults & Advanced",
         text: "Technical training to refine the details: strategy, intensity and consistency.",
-        meta: "Mon–Sat"
+        meta: "Mon–Sat · No-Gi on Tuesdays"
       },
       {
         title: "Competition",
@@ -143,6 +143,7 @@ export const en: Dictionary = {
       beginners: "Beginners",
       allLevels: "All levels",
       advanced: "Advanced",
+      noGi: "No-Gi",
       sparring: "Sparring",
       miniKids: "Mini Kids",
       kids: "Kids",
@@ -152,7 +153,27 @@ export const en: Dictionary = {
     legend: "Great for your first class",
     note: "Times may change on public holidays and event days. Check with us before your first class.",
     tablistLabel: "Days of the week",
-    today: "Today"
+    today: "Today",
+    guideTitle: "Class guide",
+    guide: [
+      {
+        group: "Children",
+        items: [
+          { name: "Mini Kids", detail: "Ages 3–6 · 30 min" },
+          { name: "Kids I", detail: "Ages 7–9 · 50 min" },
+          { name: "Kids II", detail: "Ages 10–12 · 50 min" },
+          { name: "Teens", detail: "Ages 13–15 · 50 min" }
+        ]
+      },
+      {
+        group: "Adults",
+        items: [
+          { name: "Beginners", detail: "White belt up to 2 stripes · 1h" },
+          { name: "Advanced", detail: "White belt with 3+ stripes and above · 1h" },
+          { name: "Sparring", detail: "Advanced students · 30 min" }
+        ]
+      }
+    ]
   },
   faq: {
     eyebrow: "FAQ",
@@ -201,7 +222,7 @@ export const en: Dictionary = {
     instagram: "Instagram",
     email: "Email",
     location: "Location",
-    locationValue: "Odivelas, Lisbon",
+    locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
     directions: "Open in Google Maps",
     mapTitle: "Map showing Rio21 BJJ in Odivelas"
   },

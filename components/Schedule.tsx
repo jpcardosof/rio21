@@ -4,13 +4,19 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { WhatsAppIcon } from "@/components/icons";
 import type { Dictionary } from "@/content/types";
-import { beginnerFriendly, siteConfig, type SessionType } from "@/siteConfig";
+import { beginnerFriendly, sessionMinutes, siteConfig, type SessionType } from "@/siteConfig";
 
 type ScheduleProps = {
   schedule: Dictionary["schedule"];
   ctaLabel: string;
   whatsappHref: string;
 };
+
+/** 60 → "1h", 30 → "30 min" (igual em PT e EN). */
+function duration(type: SessionType) {
+  const minutes = sessionMinutes[type];
+  return minutes % 60 === 0 ? `${minutes / 60}h` : `${minutes} min`;
+}
 
 function Dot() {
   return <span aria-hidden="true" className="inline-block h-2 w-2 shrink-0 rounded-full bg-accent ring-1 ring-fg/10" />;
@@ -107,7 +113,10 @@ export function Schedule({ schedule, ctaLabel, whatsappHref }: ScheduleProps) {
               {days[active].map(([time, type]) => (
                 <li key={`${time}-${type}`} className="card flex items-center gap-5 rounded-2xl px-5 py-4">
                   <time className="w-14 shrink-0 text-lg font-semibold tabular-nums">{time}</time>
-                  <span className="flex-1">{schedule.sessions[type]}</span>
+                  <span className="flex-1">
+                    {schedule.sessions[type]}
+                    <span className="ml-2 text-sm text-muted">{duration(type)}</span>
+                  </span>
                   {isBeginner(type) && (
                     <span className="flex items-center gap-2 text-xs font-semibold text-muted">
                       <Dot />
@@ -142,7 +151,10 @@ export function Schedule({ schedule, ctaLabel, whatsappHref }: ScheduleProps) {
                     key={`${time}-${type}`}
                     className="rounded-2xl bg-bg px-4 py-3.5 transition-transform duration-300 ease-soft hover:-translate-y-0.5"
                   >
-                    <time className="block font-semibold tabular-nums">{time}</time>
+                    <p className="flex items-baseline justify-between gap-2">
+                      <time className="font-semibold tabular-nums">{time}</time>
+                      <span className="text-xs text-muted">{duration(type)}</span>
+                    </p>
                     <span className="mt-0.5 flex items-center gap-2 text-sm text-muted">
                       {schedule.sessions[type]}
                       {isBeginner(type) && (
@@ -157,6 +169,28 @@ export function Schedule({ schedule, ctaLabel, whatsappHref }: ScheduleProps) {
               </ul>
             </div>
           ))}
+        </div>
+
+        <div data-reveal className="mt-12">
+          <h3 className="eyebrow">{schedule.guideTitle}</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {schedule.guide.map((group) => (
+              <div key={group.group} className="card rounded-3xl p-6">
+                <p className="text-sm font-semibold">{group.group}</p>
+                <dl className="mt-3">
+                  {group.items.map((item) => (
+                    <div
+                      key={item.name}
+                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-b border-line py-2.5 last:border-b-0 dark:border-bg"
+                    >
+                      <dt className="font-semibold">{item.name}</dt>
+                      <dd className="text-sm text-muted">{item.detail}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div data-reveal className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">

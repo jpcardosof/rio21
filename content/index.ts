@@ -62,10 +62,18 @@ export function buildJsonLd(locale: Locale) {
       email: siteConfig.contacts.email,
       address: {
         "@type": "PostalAddress",
+        streetAddress: siteConfig.location.streetAddress,
+        postalCode: siteConfig.location.postalCode,
         addressLocality: siteConfig.location.locality,
         addressRegion: siteConfig.location.region,
         addressCountry: siteConfig.location.country
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: siteConfig.location.latitude,
+        longitude: siteConfig.location.longitude
+      },
+      hasMap: siteConfig.location.mapsUrl,
       sameAs: [siteConfig.contacts.instagram],
       makesOffer: {
         "@type": "Offer",

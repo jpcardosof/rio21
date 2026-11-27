@@ -43,7 +43,7 @@ export const pt: Dictionary = {
       "Técnica, disciplina e confiança num tatame preparado para todos os níveis — do primeiro treino à competição.",
     secondaryCta: "Ver horário",
     facts: [
-      { label: "Treinos", value: "Seg–Sáb · 07h–21h30" },
+      { label: "Treinos", value: "Seg–Sáb · 06h15–22h" },
       { label: "Turmas", value: "Kids · Teens · Adultos" },
       { label: "Experiência", value: "Não é precisa" }
     ],
@@ -86,7 +86,7 @@ export const pt: Dictionary = {
       {
         title: "Kids & Mini Kids",
         text: "Coordenação, respeito e disciplina através do jogo. Um espaço seguro para crescer com valores.",
-        meta: "Mini Kids seg. e qua. 18:00 · Kids 18:30"
+        meta: "Mini Kids seg., qua. e sex. 18:00 · Kids 18:30"
       },
       {
         title: "Adolescentes",
@@ -101,7 +101,7 @@ export const pt: Dictionary = {
       {
         title: "Adultos & Avançados",
         text: "Treino técnico para evoluir no detalhe: estratégia, intensidade e consistência.",
-        meta: "Seg. a sáb."
+        meta: "Seg. a sáb. · No-Gi à terça"
       },
       {
         title: "Competição",
@@ -143,6 +143,7 @@ export const pt: Dictionary = {
       beginners: "Iniciantes",
       allLevels: "Todos os níveis",
       advanced: "Avançados",
+      noGi: "No-Gi",
       sparring: "Sparring",
       miniKids: "Mini Kids",
       kids: "Kids",
@@ -152,7 +153,27 @@ export const pt: Dictionary = {
     legend: "Ideal para a primeira aula",
     note: "Os horários podem mudar em feriados e eventos. Confirma connosco antes da primeira aula.",
     tablistLabel: "Dias da semana",
-    today: "Hoje"
+    today: "Hoje",
+    guideTitle: "Guia de turmas",
+    guide: [
+      {
+        group: "Crianças",
+        items: [
+          { name: "Mini Kids", detail: "3–6 anos · 30 min" },
+          { name: "Kids I", detail: "7–9 anos · 50 min" },
+          { name: "Kids II", detail: "10–12 anos · 50 min" },
+          { name: "Adolescentes", detail: "13–15 anos · 50 min" }
+        ]
+      },
+      {
+        group: "Adultos",
+        items: [
+          { name: "Iniciantes", detail: "Faixa branca até 2 graus · 1h" },
+          { name: "Avançados", detail: "Acima de faixa branca 2 graus · 1h" },
+          { name: "Sparring", detail: "Avançados · 30 min" }
+        ]
+      }
+    ]
   },
   faq: {
     eyebrow: "FAQ",
@@ -202,7 +223,7 @@ export const pt: Dictionary = {
     instagram: "Instagram",
     email: "Email",
     location: "Local",
-    locationValue: "Odivelas, Lisboa",
+    locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
     directions: "Abrir no Google Maps",
     mapTitle: "Mapa da Rio21 BJJ em Odivelas"
   },

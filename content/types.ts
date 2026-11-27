@@ -76,6 +76,8 @@ export type Dictionary = {
     note: string;
     tablistLabel: string;
     today: string;
+    guideTitle: string;
+    guide: { group: string; items: { name: string; detail: string }[] }[];
   };
   faq: {
     eyebrow: string;

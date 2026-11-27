@@ -24,7 +24,7 @@ Abre `http://localhost:3000` (PT) ou `http://localhost:3000/en` (EN).
 | Textos em português | `content/pt.ts` |
 | Textos em inglês | `content/en.ts` |
 | Contactos, WhatsApp, Instagram, mapa | `siteConfig.ts` → `contacts`, `location` |
-| Horário semanal | `siteConfig.ts` → `timetable` (índice 0 = segunda) |
+| Horário semanal | `siteConfig.ts` → `timetable` (índice 0 = segunda); durações em `sessionMinutes` |
 | Professores e instrutores | `siteConfig.ts` → `team` |
 | Imagens usadas | `siteConfig.ts` → `images` |
 | Cores (design system) | `app/globals.css` → `:root` e `.dark` |
@@ -33,7 +33,7 @@ Ao adicionar um texto novo, adiciona-o **nos dois ficheiros** (`pt.ts` e `en.ts`
 
 ### Horário
 
-Cada sessão é `["HH:MM", tipo]`. Os tipos são `beginners`, `allLevels`, `advanced`, `sparring`, `miniKids`, `kids`, `teens`. Os tipos `beginners` e `allLevels` aparecem assinalados como "ideal para a primeira aula".
+Cada sessão é `["HH:MM", tipo]`. Os tipos são `beginners`, `allLevels`, `advanced`, `noGi`, `sparring`, `miniKids`, `kids`, `teens`. Os tipos `beginners` e `allLevels` aparecem assinalados como "ideal para a primeira aula".
 
 ## Design system
 
@@ -56,6 +56,6 @@ content/           → textos PT/EN, metadados SEO e JSON-LD
 
 ## Antes de publicar
 
-- Confirmar o número de WhatsApp, o email e o horário com a academia.
+- Contactos, morada e horário confirmados com a academia em novembro de 2026.
 - Confirmar a autorização de uso das fotos em `public/images/`.
 - Deploy na Vercel: build com `npm run build`.
