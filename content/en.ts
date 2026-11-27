@@ -6,7 +6,7 @@ export const en: Dictionary = {
   seo: {
     title: "Rio21 BJJ | Brazilian Jiu-Jitsu in Odivelas, Lisbon",
     description:
-      "Brazilian Jiu-Jitsu academy in Odivelas, Lisbon. Classes for mini kids, kids, teens and adults, Monday to Saturday. Your first class is free.",
+      "Brazilian Jiu-Jitsu academy in Ramada, Odivelas (Lisbon). Classes for children, teens and adults, Monday to Saturday. Your first class is free.",
     keywords: [
       "Brazilian Jiu-Jitsu Lisbon",
       "BJJ Odivelas",
@@ -17,7 +17,7 @@ export const en: Dictionary = {
       "Free trial BJJ class Lisbon"
     ]
   },
-  whatsappMessage: "Hi Rio21! I'd like to book a free trial class in Odivelas.",
+  whatsappMessage: "Hello! I would like to book a free trial class at Rio21.",
   nav: [
     { href: "#aulas", label: "Classes" },
     { href: "#horario", label: "Timetable" },
@@ -29,9 +29,9 @@ export const en: Dictionary = {
     skipToContent: "Skip to content",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    themeToggle: "Toggle light/dark mode",
+    themeToggle: "Switch between light and dark mode",
     languageLabel: "Language",
-    logoHome: "Rio21 BJJ — home",
+    logoHome: "Rio21 BJJ, home page",
     ctaShort: "Free class",
     ctaWhatsapp: "Book a free class",
     ctaInstagram: "Message on Instagram"
@@ -40,7 +40,7 @@ export const en: Dictionary = {
     eyebrow: "Brazilian Jiu-Jitsu · Odivelas, Lisbon",
     title: ["Strong mind.", "Strong body."],
     subtitle:
-      "Technique, discipline and confidence on a mat built for every level — from your first session to competition.",
+      "Technique, discipline and confidence in an environment built for every level, from your first session to competition.",
     secondaryCta: "See timetable",
     facts: [
       { label: "Training", value: "Mon–Sat · 6:15am–10pm" },
@@ -52,28 +52,28 @@ export const en: Dictionary = {
   },
   trial: {
     eyebrow: "Free trial class",
-    title: "Your first class is on us",
-    text: "No commitment, no experience needed. Come and meet the team, feel the atmosphere and try Jiu-Jitsu on the mat.",
+    title: "Your first class is free",
+    text: "No commitment and no experience required. Come and meet the team, see the environment and experience the way we train.",
     steps: [
-      { title: "Send a message", text: "Reach us on WhatsApp or Instagram." },
-      { title: "Pick a class", text: "We'll help you find the right time slot." },
-      { title: "Step on the mat", text: "Arrive 10 minutes early. A coach will guide you." }
+      { title: "Send us a message", text: "Get in touch on WhatsApp or Instagram." },
+      { title: "Choose your class", text: "We will recommend the class and time that best suit your level." },
+      { title: "Come and train", text: "Arrive 10 minutes early to put on your gi. A coach will guide you throughout the class." }
     ],
-    bringTitle: "What to bring",
+    bringTitle: "Before class",
     bring: [
-      "Comfortable sportswear, no zips",
-      "A water bottle",
+      "Gi provided by the academy",
+      "Water bottle",
       "Flip-flops for off the mat",
-      "No gi needed to get started"
+      "Short nails, for safety"
     ],
     or: "or"
   },
   about: {
     eyebrow: "About",
-    title: "Building people on and off the mat",
+    title: "Developing people on and off the mat",
     text: [
-      "Rio21 is a Brazilian Jiu-Jitsu team born in Odivelas, Lisbon.",
-      "Through technique, discipline and respect, we help children, teens and adults build confidence, self-control, fitness and a real sense of community."
+      "Rio21 is a Brazilian Jiu-Jitsu team founded in Odivelas, Lisbon.",
+      "Through technique, discipline and respect, we help children, teens and adults develop confidence, self-control, fitness and team spirit."
     ],
     values: ["Discipline", "Respect", "Growth", "Confidence", "Family", "Resilience"],
     imageAlt: "Two Rio21 athletes drilling guard on the mat"
@@ -81,26 +81,26 @@ export const en: Dictionary = {
   classes: {
     eyebrow: "Classes",
     title: "A class for every stage",
-    intro: "From your first roll to the podium. All classes are mixed and led by the Rio21 coaching team.",
+    intro: "From your first session to competition. All classes are mixed and supervised by the Rio21 coaching team.",
     items: [
       {
         title: "Kids & Mini Kids",
-        text: "Coordination, respect and discipline through play. A safe place to grow with good values.",
+        text: "Motor coordination, respect and discipline through play, in a safe and supervised environment.",
         meta: "Mini Kids Mon, Wed & Fri 6pm · Kids 6:30pm"
       },
       {
         title: "Teens",
-        text: "Technique, fitness and confidence in a group designed for their age.",
+        text: "Technique, fitness and self-confidence in a class designed for ages 13 to 15.",
         meta: "Tue & Thu 6:30pm"
       },
       {
         title: "Beginners",
-        text: "Start from zero with clear fundamentals and close guidance. No experience needed.",
+        text: "Clear fundamentals and close guidance for complete beginners. No experience required.",
         meta: "Mon–Sat · several classes"
       },
       {
         title: "Adults & Advanced",
-        text: "Technical training to refine the details: strategy, intensity and consistency.",
+        text: "Technical training focused on detail, strategy and consistency.",
         meta: "Mon–Sat · No-Gi on Tuesdays"
       },
       {
@@ -110,16 +110,16 @@ export const en: Dictionary = {
       },
       {
         title: "Self-Defence",
-        text: "Control, distance and composure — including classes dedicated to women.",
+        text: "Control, distance management and composure, with classes dedicated to women.",
         meta: "Classes & workshops"
       },
       {
         title: "Parents & Kids",
-        text: "Train as a family: parents and children learn together, with technique adapted to each age.",
+        text: "Parents and children train together, with techniques adapted to each age.",
         meta: "Dates on Instagram"
       }
     ],
-    footnote: "Not sure where to start? Tell us your age and goals — we'll point you to the right class.",
+    footnote: "Not sure which class is right for you? Tell us your age and goals and we will help you choose.",
     images: {
       submission: "Rio21 athlete finishing a submission from guard on the academy mat",
       armlock: "Rio21 coach watching an armlock during training"
@@ -127,7 +127,7 @@ export const en: Dictionary = {
   },
   team: {
     eyebrow: "Team",
-    title: "Who coaches you on the mat",
+    title: "The coaches who guide you on the mat",
     founderRole: "Founder",
     belt: (degree) => `Black belt · ${degree}${degree === 1 ? "st" : degree === 2 ? "nd" : degree === 3 ? "rd" : "th"} degree`,
     professors: "Professors",
@@ -136,7 +136,7 @@ export const en: Dictionary = {
   schedule: {
     eyebrow: "Timetable",
     title: "Weekly timetable",
-    intro: "Monday to Saturday, morning to evening. Highlighted classes are ideal for your first session.",
+    intro: "Monday to Saturday, morning to evening. Highlighted classes are the best choice for your first session.",
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     daysShort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     sessions: {
@@ -149,9 +149,9 @@ export const en: Dictionary = {
       kids: "Kids",
       teens: "Teens"
     },
-    beginnerTag: "Great to start",
-    legend: "Great for your first class",
-    note: "Times may change on public holidays and event days. Check with us before your first class.",
+    beginnerTag: "Suitable for beginners",
+    legend: "Recommended for your first class",
+    note: "Times may change on public holidays and event days. We recommend checking with us before your first class.",
     tablistLabel: "Days of the week",
     today: "Today",
     guideTitle: "Class guide",
@@ -159,10 +159,10 @@ export const en: Dictionary = {
       {
         group: "Children",
         items: [
-          { name: "Mini Kids", detail: "Ages 3–6 · 30 min" },
-          { name: "Kids I", detail: "Ages 7–9 · 50 min" },
-          { name: "Kids II", detail: "Ages 10–12 · 50 min" },
-          { name: "Teens", detail: "Ages 13–15 · 50 min" }
+          { name: "Mini Kids", detail: "Ages 3 to 6 · 30 min" },
+          { name: "Kids I", detail: "Ages 7 to 9 · 50 min" },
+          { name: "Kids II", detail: "Ages 10 to 12 · 50 min" },
+          { name: "Teens", detail: "Ages 13 to 15 · 50 min" }
         ]
       },
       {
@@ -182,50 +182,49 @@ export const en: Dictionary = {
       {
         question: "Do I need any experience to start?",
         answer:
-          "No. Beginner classes are made for people starting from zero, with step-by-step teaching and close guidance."
+          "No. Beginner classes are designed for people starting from zero, with gradual progression and close guidance."
       },
       {
         question: "How do I book the free trial class?",
-        answer: "Send us a message on WhatsApp or Instagram. We'll help you choose the right class and time."
+        answer: "Simply send us a message on WhatsApp or Instagram. We will help you choose the right class and time."
       },
       {
         question: "Do I need a gi for my first class?",
         answer:
-          "Not necessarily. Come in comfortable sportswear and check with the coach about the recommended gear."
+          "No. The academy provides a gi during the class. Just bring a water bottle and flip-flops for off the mat."
       },
       {
         question: "Is Jiu-Jitsu suitable for children?",
         answer:
-          "Yes. Mini Kids and Kids classes build coordination, respect, discipline and confidence in a safe environment. We also run Parents & Kids sessions."
+          "Yes. Our Mini Kids (ages 3 to 6) and Kids (ages 7 to 12) classes develop coordination, respect, discipline and confidence in a safe environment. We also run Parents & Kids sessions."
       },
       {
         question: "Are there classes for women?",
-        answer: "Yes. All classes are mixed, and we also run self-defence classes dedicated to women."
+        answer: "Yes. All classes are mixed, and we also offer self-defence classes dedicated to women."
       },
       {
         question: "Can I train without wanting to compete?",
         answer:
-          "Absolutely. Jiu-Jitsu is great for fitness, self-defence and confidence, with or without competition goals."
+          "Absolutely. Jiu-Jitsu improves fitness, self-defence skills and self-confidence, regardless of competitive goals."
       },
       {
         question: "Do you support athletes who want to compete?",
-        answer:
-          "Yes. The coaching team supports athletes in national gi and no-gi championships with dedicated preparation."
+        answer: "Yes. Our coaching team prepares and supports athletes in national gi and no-gi championships."
       }
     ]
   },
   contact: {
     eyebrow: "Contact",
-    title: "Come train with us",
-    text: "The best way to get to know Rio21 is to step on the mat. Get in touch and book your free class.",
+    title: "Come and train with us",
+    text: "The best way to get to know Rio21 is to try a class. Get in touch and book your free trial class.",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
     email: "Email",
-    location: "Location",
+    location: "Address",
     locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
     directions: "Get directions (GPS)",
     viewOnMaps: "View on Google Maps",
-    mapTitle: "Map showing Rio21 BJJ in Odivelas"
+    mapTitle: "Map showing the Rio21 BJJ location in Ramada, Odivelas"
   },
   footer: {
     slogan: "Strong mind, strong body.",

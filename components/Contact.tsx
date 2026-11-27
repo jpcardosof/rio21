@@ -75,7 +75,7 @@ export function Contact({ contact, ui, whatsappHref }: ContactProps) {
               href={location.directionsUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${contact.directions} — ${contact.locationValue.replace("\n", ", ")}`}
+              aria-label={`${contact.directions}: ${contact.locationValue.replace("\n", ", ")}`}
               className="absolute inset-0 flex items-start justify-start p-4 sm:p-5"
             >
               <span className="btn-primary pointer-events-none min-h-12 px-5 shadow-lift group-hover:-translate-y-0.5">

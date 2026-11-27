@@ -45,7 +45,7 @@ export function LanguageSwitch({
               }`}
             >
               {locale.toUpperCase()}
-              <span className="sr-only"> — {names[locale]}</span>
+              <span className="sr-only">, {names[locale]}</span>
             </a>
           </Fragment>
         );

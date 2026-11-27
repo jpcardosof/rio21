@@ -42,16 +42,18 @@ export function Trial({ trial, ui, whatsappHref, instagramHref }: TrialProps) {
                   <WhatsAppIcon />
                   {ui.ctaWhatsapp}
                 </a>
-                <p className="text-sm">
-                  {trial.or}{" "}
+                <p className="flex items-center gap-2 text-sm">
+                  <span>{trial.or}</span>
                   <a
                     href={instagramHref}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 items-center gap-2 font-semibold underline decoration-1 underline-offset-[6px]"
+                    className="group inline-flex min-h-11 items-center gap-2 font-semibold"
                   >
-                    <InstagramIcon className="h-4 w-4" />
-                    {ui.ctaInstagram}
+                    <InstagramIcon className="h-4 w-4 shrink-0" />
+                    <span className="underline decoration-1 underline-offset-[6px] transition-[text-decoration-color] group-hover:decoration-2">
+                      {ui.ctaInstagram}
+                    </span>
                   </a>
                 </p>
               </div>
@@ -63,7 +65,7 @@ export function Trial({ trial, ui, whatsappHref, instagramHref }: TrialProps) {
                   key={step.title}
                   data-reveal
                   style={delay(150 + index * 120)}
-                  className="flex gap-4 rounded-2xl bg-white/45 p-5 backdrop-blur-sm"
+                  className="flex items-center gap-4 rounded-2xl bg-white/45 p-5 backdrop-blur-sm"
                 >
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink text-sm font-semibold tabular-nums text-white">
                     {index + 1}
