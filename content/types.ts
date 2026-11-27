@@ -94,6 +94,7 @@ export type Dictionary = {
     location: string;
     locationValue: string;
     directions: string;
+    viewOnMaps: string;
     mapTitle: string;
   };
   footer: { slogan: string; rights: string; backToTop: string };

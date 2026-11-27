@@ -223,7 +223,8 @@ export const en: Dictionary = {
     email: "Email",
     location: "Location",
     locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
-    directions: "Open in Google Maps",
+    directions: "Get directions (GPS)",
+    viewOnMaps: "View on Google Maps",
     mapTitle: "Map showing Rio21 BJJ in Odivelas"
   },
   footer: {

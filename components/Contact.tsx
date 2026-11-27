@@ -15,7 +15,7 @@ export function Contact({ contact, ui, whatsappHref }: ContactProps) {
     { label: contact.whatsapp, value: contacts.whatsappDisplay, href: whatsappHref, external: true },
     { label: contact.instagram, value: contacts.instagramHandle, href: contacts.instagram, external: true },
     { label: contact.email, value: contacts.email, href: `mailto:${contacts.email}`, external: false },
-    { label: contact.location, value: contact.locationValue, href: location.mapsUrl, external: true }
+    { label: contact.location, value: contact.locationValue, href: location.directionsUrl, external: true }
   ];
 
   return (
@@ -61,14 +61,28 @@ export function Contact({ contact, ui, whatsappHref }: ContactProps) {
         </div>
 
         <div data-reveal className="lg:col-span-7">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-surface lg:aspect-auto lg:h-full lg:min-h-[30rem]">
+          {/* O mapa inteiro é um link: abre o GPS (Google Maps) com a rota até à academia. */}
+          <div className="group relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-surface lg:aspect-auto lg:h-full lg:min-h-[30rem]">
             <iframe
               title={contact.mapTitle}
               src={location.mapEmbedUrl}
               loading="lazy"
+              tabIndex={-1}
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full border-0 grayscale dark:invert-[0.9] dark:hue-rotate-180"
+              className="pointer-events-none absolute inset-0 h-full w-full scale-[1.01] border-0 grayscale transition-transform duration-700 ease-soft group-hover:scale-[1.04] dark:invert-[0.9] dark:hue-rotate-180"
             />
+            <a
+              href={location.directionsUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${contact.directions} — ${contact.locationValue.replace("\n", ", ")}`}
+              className="absolute inset-0 flex items-start justify-start p-4 sm:p-5"
+            >
+              <span className="btn-primary pointer-events-none min-h-12 px-5 shadow-lift group-hover:-translate-y-0.5">
+                {contact.directions}
+                <ArrowUpRightIcon className="h-4 w-4" />
+              </span>
+            </a>
           </div>
           <a
             href={location.mapsUrl}
@@ -76,7 +90,7 @@ export function Contact({ contact, ui, whatsappHref }: ContactProps) {
             rel="noreferrer"
             className="group mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-muted transition-colors hover:text-fg"
           >
-            {contact.directions}
+            {contact.viewOnMaps}
             <ArrowUpRightIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </div>

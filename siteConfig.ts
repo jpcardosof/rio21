@@ -37,9 +37,9 @@ export const siteConfig = {
     email: "geral@rio21lisboa.com",
     whatsapp: "351916995642",
     whatsappDisplay: "+351 916 995 642",
-    instagram: "https://www.instagram.com/rio21.lisboa/",
-    instagramHandle: "@rio21.lisboa",
-    instagramDm: "https://ig.me/m/rio21.lisboa"
+    instagram: "https://www.instagram.com/rio21.matriz/",
+    instagramHandle: "@rio21.matriz",
+    instagramDm: "https://ig.me/m/rio21.matriz"
   },
   /** Academia "RIO21 - Matriz Ramada" (link do Google Maps enviado pela academia). */
   location: {
@@ -51,6 +51,8 @@ export const siteConfig = {
     latitude: 38.8117353,
     longitude: -9.1918799,
     mapsUrl: "https://maps.app.goo.gl/9pGGGg1uZsmHqShr7",
+    /** Abre o Google Maps (app no telemóvel) já com a navegação até à academia. */
+    directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=38.8117353%2C-9.1918799&dir_action=navigate",
     mapEmbedUrl: "https://www.google.com/maps?q=38.8117353,-9.1918799&z=17&output=embed"
   },
   images: {
