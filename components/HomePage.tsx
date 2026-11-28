@@ -16,6 +16,7 @@ import { buildJsonLd, getDictionary } from "@/content";
 import { getMethod } from "@/content/curriculum";
 import { methodPath, type Locale } from "@/content/types";
 import { cycleWeek } from "@/lib/cycle";
+import { teaserPrograms } from "@/lib/teaser";
 import { siteConfig, whatsappUrl } from "@/siteConfig";
 
 export function HomePage({ locale }: { locale: Locale }) {
@@ -55,7 +56,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           cta={method.teaser.cta}
           href={methodPath[locale]}
           weekLabel={method.weekLabel}
-          programs={method.programs.map((program) => ({
+          programs={teaserPrograms(method.programs).map((program) => ({
             id: program.id,
             name: program.name,
             headlines: program.weeks.map((week) => week.headline)

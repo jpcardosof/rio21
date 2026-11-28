@@ -2,10 +2,11 @@
 
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import type { CurriculumWeek, MethodDictionary } from "@/content/curriculum.types";
 import { useCycleWeek } from "@/components/useCycleWeek";
 import { formatWeekLabel } from "@/lib/cycle";
+import { selectedWeek } from "@/lib/week-selection";
 
 type ProgramExplorerProps = {
   method: Pick<MethodDictionary, "programs" | "weekLabel" | "thisWeek" | "tablistLabel">;
@@ -46,9 +47,14 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
   const week8 = useCycleWeek(8, initialWeeks[8]);
   const current = total === 8 ? week8 : week16;
 
-  const [selected, setSelected] = useState(current);
-  // Ao mudar de turma (ou de semana), volta a mostrar a semana atual.
-  useEffect(() => setSelected(current), [active, current]);
+  // Semana escolhida pelo visitante; ao mudar de turma volta à semana atual.
+  const [picked, setPicked] = useState<number | null>(null);
+  const selected = selectedWeek(picked, current, total);
+
+  function selectProgram(index: number) {
+    setActive(index);
+    setPicked(null);
+  }
 
   function onTabKey(event: KeyboardEvent<HTMLButtonElement>) {
     const last = programs.length - 1;
@@ -60,7 +66,7 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
       : null;
     if (next === null) return;
     event.preventDefault();
-    setActive(next);
+    selectProgram(next);
     tabs.current[next]?.focus();
   }
 
@@ -84,7 +90,7 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
                 aria-selected={isActive}
                 aria-controls="turma-painel"
                 tabIndex={isActive ? 0 : -1}
-                onClick={() => setActive(index)}
+                onClick={() => selectProgram(index)}
                 onKeyDown={onTabKey}
                 className={`h-11 whitespace-nowrap rounded-full px-5 text-sm font-semibold transition-all duration-300 ${
                   isActive ? "bg-bg text-fg shadow-soft" : "text-muted hover:text-fg"
@@ -157,7 +163,7 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
                   >
                     <button
                       type="button"
-                      onClick={() => setSelected(number)}
+                      onClick={() => setPicked(number)}
                       aria-pressed={isSelected}
                       className={`flex h-full w-full flex-col items-start gap-1.5 rounded-2xl p-4 text-left transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 ${
                         isSelected ? "bg-fg text-bg" : "bg-surface hover:shadow-soft"
