@@ -1,4 +1,5 @@
 import { Anton, Source_Sans_3 } from "next/font/google";
+import { MotionProvider } from "@/components/MotionProvider";
 import type { Viewport } from "next";
 
 const sans = Source_Sans_3({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -32,7 +33,9 @@ export function RootDocument({ lang, children }: { lang: string; children: React
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
