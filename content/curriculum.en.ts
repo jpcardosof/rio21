@@ -147,7 +147,7 @@ export const methodEn: MethodDictionary = {
   title: "A method planned week by week",
   intro:
     "Every class follows a structured 16-week curriculum (8 weeks for the Women's class). Each week has a defined technical theme, applied self-defence and a value practised on and off the mat. At the end of the cycle, the curriculum starts again.",
-  weekLabel: (week, total) => `Week ${week} of ${total}`,
+  weekLabel: "Week {week} of {total}",
   thisWeek: "This week",
   tablistLabel: "Classes",
   programs: [

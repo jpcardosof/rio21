@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/siteConfig";
 import { en } from "./en";
 import { pt } from "./pt";
-import { localePath, type Dictionary, type Locale } from "./types";
+import { getMethod } from "./curriculum";
+import { localePath, methodPath, type Dictionary, type Locale } from "./types";
 
 const dictionaries: Record<Locale, Dictionary> = { pt, en };
 
@@ -10,38 +11,45 @@ export function getDictionary(locale: Locale): Dictionary {
   return dictionaries[locale];
 }
 
-export function buildMetadata(locale: Locale): Metadata {
+type PageSeo = { title: string; description: string; paths: Record<Locale, string> };
+
+function pageMetadata(locale: Locale, { title, description, paths }: PageSeo): Metadata {
   const dict = getDictionary(locale);
   const image = siteConfig.images.hero;
 
   return {
     metadataBase: new URL(siteConfig.url),
-    title: dict.seo.title,
-    description: dict.seo.description,
+    title,
+    description,
     keywords: dict.seo.keywords,
     authors: [{ name: siteConfig.name }],
     alternates: {
-      canonical: localePath[locale],
-      languages: { "pt-PT": localePath.pt, en: localePath.en, "x-default": localePath.pt }
+      canonical: paths[locale],
+      languages: { "pt-PT": paths.pt, en: paths.en, "x-default": paths.pt }
     },
     icons: { icon: siteConfig.logoBadge, apple: siteConfig.logoBadge },
     openGraph: {
-      title: dict.seo.title,
-      description: dict.seo.description,
-      url: localePath[locale],
+      title,
+      description,
+      url: paths[locale],
       siteName: siteConfig.name,
       locale: dict.ogLocale,
       alternateLocale: locale === "pt" ? [en.ogLocale] : [pt.ogLocale],
       type: "website",
       images: [{ url: image.src, width: image.width, height: image.height, alt: dict.hero.imageAlt }]
     },
-    twitter: {
-      card: "summary_large_image",
-      title: dict.seo.title,
-      description: dict.seo.description,
-      images: [image.src]
-    }
+    twitter: { card: "summary_large_image", title, description, images: [image.src] }
   };
+}
+
+export function buildMetadata(locale: Locale): Metadata {
+  const { seo } = getDictionary(locale);
+  return pageMetadata(locale, { title: seo.title, description: seo.description, paths: localePath });
+}
+
+export function buildMethodMetadata(locale: Locale): Metadata {
+  const { seo } = getMethod(locale);
+  return pageMetadata(locale, { title: seo.title, description: seo.description, paths: methodPath });
 }
 
 export function buildJsonLd(locale: Locale) {

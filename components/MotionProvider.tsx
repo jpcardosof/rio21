@@ -3,7 +3,7 @@
 import { LazyMotion, MotionConfig } from "motion/react";
 
 // As funcionalidades de animação são descarregadas depois da página abrir.
-const loadFeatures = () => import("motion/react").then((mod) => mod.domAnimation);
+const loadFeatures = () => import("./motion-features").then((mod) => mod.default);
 
 /** Motion leve: componentes `m.*`, respeita "reduzir movimento" do sistema. */
 export function MotionProvider({ children }: { children: React.ReactNode }) {

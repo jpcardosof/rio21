@@ -99,3 +99,5 @@ export type Dictionary = {
   };
   footer: { slogan: string; rights: string; backToTop: string };
 };
+
+export const methodPath: Record<Locale, string> = { pt: "/metodo", en: "/en/method" };

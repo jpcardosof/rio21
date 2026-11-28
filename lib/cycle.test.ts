@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { cycleWeek } from "./cycle.ts";
+import { cycleWeek, formatWeekLabel } from "./cycle.ts";
 
 const START = "2026-11-16";
 
@@ -38,4 +38,9 @@ test("dates before the start still map into the cycle", () => {
 test("years later it is still a valid week", () => {
   const week = cycleWeek(new Date("2031-06-18T09:00:00Z"), START, 16);
   assert.ok(week >= 1 && week <= 16);
+});
+
+test("formats the week label template", () => {
+  assert.equal(formatWeekLabel("Semana {week} de {total}", 2, 16), "Semana 2 de 16");
+  assert.equal(formatWeekLabel("Week {week} of {total}", 1, 8), "Week 1 of 8");
 });

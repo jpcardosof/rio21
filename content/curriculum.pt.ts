@@ -147,7 +147,7 @@ export const methodPt: MethodDictionary = {
   title: "Um método pensado semana a semana",
   intro:
     "Cada turma segue um currículo estruturado de 16 semanas (8 na turma Feminino). Todas as semanas têm um tema técnico definido, defesa pessoal aplicada e um valor trabalhado dentro e fora do tatame. No fim do ciclo, o currículo recomeça.",
-  weekLabel: (week, total) => `Semana ${week} de ${total}`,
+  weekLabel: "Semana {week} de {total}",
   thisWeek: "Esta semana",
   tablistLabel: "Turmas",
   programs: [

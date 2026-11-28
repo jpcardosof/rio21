@@ -40,7 +40,8 @@ export type MethodDictionary = {
   eyebrow: string;
   title: string;
   intro: string;
-  weekLabel: (week: number, total: number) => string;
+  /** Modelo com {week} e {total}, ex.: "Semana {week} de {total}". */
+  weekLabel: string;
   thisWeek: string;
   tablistLabel: string;
   programs: Program[];
