@@ -1,10 +1,18 @@
 import Image from "next/image";
 import { SectionLabel } from "@/components/SectionLabel";
 import { delay } from "@/components/motion";
+import { ValuesStripes } from "@/components/ValuesStripes";
+import type { MethodDictionary } from "@/content/curriculum.types";
 import type { Dictionary } from "@/content/types";
 import { siteConfig } from "@/siteConfig";
 
-export function About({ about }: { about: Dictionary["about"] }) {
+type AboutProps = {
+  about: Dictionary["about"];
+  values: MethodDictionary["values"];
+  valuesHref: string;
+};
+
+export function About({ about, values, valuesHref }: AboutProps) {
   const image = siteConfig.images.about;
 
   return (
@@ -46,6 +54,9 @@ export function About({ about }: { about: Dictionary["about"] }) {
             />
           </div>
         </div>
+      </div>
+      <div className="shell">
+        <ValuesStripes values={values} moreHref={valuesHref} />
       </div>
     </section>
   );

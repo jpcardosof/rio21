@@ -61,7 +61,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           }))}
           initialWeeks={initialWeeks}
         />
-        <About about={dict.about} />
+        <About about={dict.about} values={method.values} valuesHref={`${methodPath[locale]}#graus`} />
         <Team team={dict.team} />
         <FAQ faq={dict.faq} />
         <Contact contact={dict.contact} ui={dict.ui} whatsappHref={wa} />
