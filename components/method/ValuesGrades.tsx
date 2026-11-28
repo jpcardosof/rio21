@@ -7,7 +7,7 @@ export function GradeSwatch({ grade, className = "h-2.5 w-14" }: { grade: ValueG
   return (
     <span
       aria-hidden="true"
-      className={`block overflow-hidden rounded-full ring-1 ring-fg/15 ${className}`}
+      className={`block overflow-hidden rounded-full ring-1 ring-fg/15 dark:ring-fg/50 ${className}`}
       style={{
         background: grade.accent
           ? `linear-gradient(${grade.color} 0 33%, ${grade.accent} 33% 66%, ${grade.color} 66%)`

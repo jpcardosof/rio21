@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionLabel } from "@/components/SectionLabel";
 import { ArrowIcon } from "@/components/icons";
 import { useCycleWeek } from "@/components/useCycleWeek";
 import { formatWeekLabel } from "@/lib/cycle";
@@ -25,18 +26,13 @@ export function ThisWeek({ eyebrow, text, cta, href, weekLabel, programs, initia
       <div className="shell">
         <div data-reveal className="card grid gap-10 p-7 sm:p-10 lg:grid-cols-12 lg:gap-12 lg:p-14">
           <div className="flex flex-col lg:col-span-4">
-            <p className="eyebrow inline-flex items-center gap-2.5">
-              <span aria-hidden="true" className="relative flex h-2 w-2">
-                <span className="absolute inset-0 rounded-full bg-accent motion-safe:animate-ping" />
-                <span className="relative h-2 w-2 rounded-full bg-accent ring-1 ring-fg/10" />
-              </span>
-              {eyebrow}
-            </p>
+            <SectionLabel>{eyebrow}</SectionLabel>
             <h2 id="esta-semana-titulo" className="display mt-5 text-[clamp(2.25rem,4vw,3.5rem)]">
               {formatWeekLabel(weekLabel, week16, 16)}
             </h2>
             <p className="mt-4 max-w-sm text-muted">{text}</p>
-            <a href={href} className="btn-ghost group mt-8 min-h-12 self-start px-6 lg:mt-auto">
+            <div aria-hidden="true" className="min-h-8 flex-1" />
+            <a href={href} className="btn-ghost group min-h-12 self-start px-6">
               {cta}
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
