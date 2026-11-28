@@ -17,20 +17,22 @@ export function Hero({ hero, ctaLabel, whatsappHref }: HeroProps) {
     <section id="inicio" className="pb-20 pt-[calc(var(--header-h)+2.5rem)] lg:pb-28 lg:pt-[calc(var(--header-h)+4.5rem)]">
       <div className="shell grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-6">
-          <p className="rise eyebrow inline-flex items-center gap-2.5">
-            <span aria-hidden="true" className="relative flex h-2 w-2">
-              <span className="absolute inset-0 rounded-full bg-accent motion-safe:animate-ping" />
-              <span className="relative h-2 w-2 rounded-full bg-accent ring-1 ring-fg/10" />
-            </span>
-            {hero.eyebrow}
-          </p>
-
-          <h1 className="display mt-7 text-[clamp(3rem,6.1vw,5.5rem)]">
-            {hero.title.map((line, index) => (
-              <span key={line} className="rise block" style={delay(120 + index * 120)}>
-                {line}
+          {/* O H1 inclui a atividade e a localização (visíveis na linha de cima) e o slogan. */}
+          <h1>
+            <span className="rise eyebrow inline-flex items-center gap-2.5">
+              <span aria-hidden="true" className="relative flex h-2 w-2">
+                <span className="absolute inset-0 rounded-full bg-accent motion-safe:animate-ping" />
+                <span className="relative h-2 w-2 rounded-full bg-accent ring-1 ring-fg/10" />
               </span>
-            ))}
+              {hero.eyebrow}
+            </span>
+            <span className="display mt-7 block text-[clamp(3rem,6.1vw,5.5rem)]">
+              {hero.title.map((line, index) => (
+                <span key={line} className="rise block" style={delay(120 + index * 120)}>
+                  {line}
+                </span>
+              ))}
+            </span>
           </h1>
 
           <p className="rise mt-7 max-w-md text-lg text-muted" style={delay(380)}>

@@ -1,6 +1,5 @@
 "use client";
 
-import { SectionLabel } from "@/components/SectionLabel";
 import { ArrowIcon } from "@/components/icons";
 import { useCycleWeek } from "@/components/useCycleWeek";
 import { formatWeekLabel } from "@/lib/cycle";
@@ -26,9 +25,14 @@ export function ThisWeek({ eyebrow, text, cta, href, weekLabel, programs, initia
       <div className="shell">
         <div data-reveal className="card grid gap-10 p-7 sm:p-10 lg:grid-cols-12 lg:gap-12 lg:p-14">
           <div className="flex flex-col lg:col-span-4">
-            <SectionLabel>{eyebrow}</SectionLabel>
-            <h2 id="esta-semana-titulo" className="display mt-5 text-[clamp(2.25rem,4vw,3.5rem)]">
-              {formatWeekLabel(weekLabel, week16, 16)}
+            <h2 id="esta-semana-titulo">
+              <span className="eyebrow flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent ring-1 ring-fg/10" />
+                {eyebrow}
+              </span>
+              <span className="display mt-5 block text-[clamp(2.25rem,4vw,3.5rem)]">
+                {formatWeekLabel(weekLabel, week16, 16)}
+              </span>
             </h2>
             <p className="mt-4 max-w-sm text-muted">{text}</p>
             <div aria-hidden="true" className="min-h-8 flex-1" />

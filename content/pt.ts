@@ -4,15 +4,15 @@ export const pt: Dictionary = {
   htmlLang: "pt-PT",
   ogLocale: "pt_PT",
   seo: {
-    title: "Rio21 BJJ | Jiu-Jitsu Brasileiro em Odivelas",
+    title: "Jiu-Jitsu em Odivelas e Ramada, Lisboa | RIO21 Lisboa",
     description:
-      "Academia de Jiu-Jitsu Brasileiro na Ramada, em Odivelas. Turmas para crianças, adolescentes e adultos, de segunda a sábado. A primeira aula é gratuita.",
+      "Academia de Jiu-Jitsu Brasileiro (BJJ) na Ramada, Odivelas, junto a Lisboa. Turmas para crianças, adolescentes e adultos. A primeira aula é gratuita.",
     keywords: [
       "Jiu-Jitsu Odivelas",
-      "BJJ Odivelas",
       "Jiu-Jitsu Ramada",
-      "Rio21 BJJ",
+      "BJJ Odivelas",
       "Jiu-Jitsu Lisboa",
+      "RIO21 Lisboa",
       "Jiu-Jitsu para crianças Odivelas",
       "Defesa pessoal Odivelas",
       "Aula experimental gratuita jiu-jitsu"
@@ -33,13 +33,13 @@ export const pt: Dictionary = {
     closeMenu: "Fechar menu",
     themeToggle: "Alternar entre modo claro e escuro",
     languageLabel: "Idioma",
-    logoHome: "Rio21 BJJ, página inicial",
+    logoHome: "RIO21 Lisboa, página inicial",
     ctaShort: "Aula grátis",
     ctaWhatsapp: "Marcar aula grátis",
     ctaInstagram: "Mensagem no Instagram"
   },
   hero: {
-    eyebrow: "Jiu-Jitsu Brasileiro · Odivelas, Lisboa",
+    eyebrow: "Jiu-Jitsu Brasileiro na Ramada · Odivelas, Lisboa",
     title: ["Mente forte.", "Corpo forte."],
     subtitle:
       "Técnica, disciplina e confiança num ambiente preparado para todos os níveis, do primeiro treino à competição.",
@@ -74,7 +74,7 @@ export const pt: Dictionary = {
     eyebrow: "Sobre",
     title: "Formar pessoas dentro e fora do tatame",
     text: [
-      "A Rio21 é uma equipa de Jiu-Jitsu Brasileiro fundada em Odivelas.",
+      "A Rio21 é uma equipa de Jiu-Jitsu Brasileiro fundada em Odivelas, com academia na Ramada, junto a Lisboa.",
       "Através da técnica, da disciplina e do respeito, ajudamos crianças, jovens e adultos a desenvolver confiança, autocontrolo, condição física e espírito de equipa."
     ],
     values: ["Disciplina", "Respeito", "Evolução", "Confiança", "Família", "Superação"],
@@ -187,6 +187,11 @@ export const pt: Dictionary = {
           "Não. As turmas de iniciantes são pensadas para quem começa do zero, com uma progressão gradual e acompanhamento próximo."
       },
       {
+        question: "Onde fica a academia?",
+        answer:
+          "Na Avenida Amália Rodrigues 30, na Ramada (Odivelas), junto a Lisboa. O mapa e as direções estão na secção de contacto."
+      },
+      {
         question: "Como marco a aula experimental gratuita?",
         answer:
           "Basta enviares-nos uma mensagem pelo WhatsApp ou pelo Instagram. Ajudamos-te a escolher a turma e o horário."
@@ -219,7 +224,7 @@ export const pt: Dictionary = {
   contact: {
     eyebrow: "Contacto",
     title: "Vem treinar connosco",
-    text: "A melhor forma de conhecer a Rio21 é experimentar uma aula. Entra em contacto connosco e marca a tua aula gratuita.",
+    text: "A melhor forma de conhecer a Rio21 é experimentar uma aula na nossa academia na Ramada, em Odivelas. Entra em contacto connosco e marca a tua aula gratuita.",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
     email: "Email",
@@ -227,7 +232,7 @@ export const pt: Dictionary = {
     locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
     directions: "Como chegar (GPS)",
     viewOnMaps: "Ver no Google Maps",
-    mapTitle: "Mapa da localização da Rio21 BJJ na Ramada, Odivelas"
+    mapTitle: "Mapa da localização da RIO21 Lisboa na Ramada, Odivelas"
   },
   app: {
     title: "Já és aluno?",

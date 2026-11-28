@@ -29,8 +29,10 @@ export const sessionMinutes: Record<SessionType, number> = {
 };
 
 export const siteConfig = {
-  name: "Rio21 BJJ",
-  url: "https://rio21bjj.pt",
+  name: "RIO21 Lisboa",
+  /** Outros nomes por que a academia é conhecida (dados estruturados). */
+  alternateNames: ["Rio21 BJJ", "RIO21 Matriz Ramada"],
+  url: "https://www.rio21lisboa.com",
   logo: "/images/logotipo_png.png",
   logoBadge: "/images/logotipo.png",
   contacts: {

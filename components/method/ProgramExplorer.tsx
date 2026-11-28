@@ -88,7 +88,7 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
                 role="tab"
                 id={`turma-${item.id}`}
                 aria-selected={isActive}
-                aria-controls="turma-painel"
+                aria-controls={`turma-painel-${item.id}`}
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => selectProgram(index)}
                 onKeyDown={onTabKey}
@@ -103,7 +103,7 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
         </div>
       </div>
 
-      <div role="tabpanel" id="turma-painel" aria-labelledby={`turma-${program.id}`} className="mt-10">
+      <div role="tabpanel" id={`turma-painel-${program.id}`} aria-labelledby={`turma-${program.id}`} className="mt-10">
         <AnimatePresence mode="wait" initial={false}>
           <m.div
             key={program.id}
@@ -186,6 +186,36 @@ export function ProgramExplorer({ method, initialWeeks }: ProgramExplorerProps) 
           </m.div>
         </AnimatePresence>
       </div>
+
+      {/* As outras turmas ficam no HTML (escondidas) para o currículo completo ser lido pelos motores de busca. */}
+      {programs.map((item, index) =>
+        index === active ? null : (
+          <div key={item.id} role="tabpanel" id={`turma-painel-${item.id}`} aria-labelledby={`turma-${item.id}`} hidden>
+            <h2>{item.name}</h2>
+            <p>
+              {item.audience} · {item.duration}
+              {item.availability && ` · ${item.availability}`}
+            </p>
+            <ol>
+              {item.weeks.map((week, weekIndex) => (
+                <li key={weekIndex}>
+                  <h3>
+                    {formatWeekLabel(method.weekLabel, weekIndex + 1, item.weeks.length)}: {week.headline}
+                  </h3>
+                  <ul>
+                    {week.blocks.map((block) => (
+                      <li key={block.label}>
+                        {block.label}: {block.title ? `${block.title}. ` : ""}
+                        {block.detail}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )
+      )}
     </div>
   );
 }

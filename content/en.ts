@@ -4,14 +4,15 @@ export const en: Dictionary = {
   htmlLang: "en",
   ogLocale: "en_GB",
   seo: {
-    title: "Rio21 BJJ | Brazilian Jiu-Jitsu in Odivelas, Lisbon",
+    title: "Brazilian Jiu-Jitsu in Odivelas, Lisbon | RIO21 Lisboa",
     description:
-      "Brazilian Jiu-Jitsu academy in Ramada, Odivelas (Lisbon). Classes for children, teens and adults, Monday to Saturday. Your first class is free.",
+      "Brazilian Jiu-Jitsu (BJJ) academy in Ramada, Odivelas, next to Lisbon. Classes for children, teens and adults. Your first class is free.",
     keywords: [
       "Brazilian Jiu-Jitsu Lisbon",
       "BJJ Odivelas",
       "BJJ Lisbon",
-      "Rio21 BJJ",
+      "Jiu-Jitsu Odivelas",
+      "RIO21 Lisboa",
       "Kids Jiu-Jitsu Lisbon",
       "Self-defence Lisbon",
       "Free trial BJJ class Lisbon"
@@ -32,13 +33,13 @@ export const en: Dictionary = {
     closeMenu: "Close menu",
     themeToggle: "Switch between light and dark mode",
     languageLabel: "Language",
-    logoHome: "Rio21 BJJ, home page",
+    logoHome: "RIO21 Lisboa, home page",
     ctaShort: "Free class",
     ctaWhatsapp: "Book a free class",
     ctaInstagram: "Message on Instagram"
   },
   hero: {
-    eyebrow: "Brazilian Jiu-Jitsu · Odivelas, Lisbon",
+    eyebrow: "Brazilian Jiu-Jitsu in Ramada · Odivelas, Lisbon",
     title: ["Strong mind.", "Strong body."],
     subtitle:
       "Technique, discipline and confidence in an environment built for every level, from your first session to competition.",
@@ -73,7 +74,7 @@ export const en: Dictionary = {
     eyebrow: "About",
     title: "Developing people on and off the mat",
     text: [
-      "Rio21 is a Brazilian Jiu-Jitsu team founded in Odivelas, Lisbon.",
+      "Rio21 is a Brazilian Jiu-Jitsu team founded in Odivelas, with its academy in Ramada, next to Lisbon.",
       "Through technique, discipline and respect, we help children, teens and adults develop confidence, self-control, fitness and team spirit."
     ],
     values: ["Discipline", "Respect", "Growth", "Confidence", "Family", "Resilience"],
@@ -186,6 +187,11 @@ export const en: Dictionary = {
           "No. Beginner classes are designed for people starting from zero, with gradual progression and close guidance."
       },
       {
+        question: "Where is the academy?",
+        answer:
+          "At Avenida Amália Rodrigues 30, in Ramada (Odivelas), next to Lisbon. The map and directions are in the contact section."
+      },
+      {
         question: "How do I book the free trial class?",
         answer: "Simply send us a message on WhatsApp or Instagram. We will help you choose the right class and time."
       },
@@ -217,7 +223,7 @@ export const en: Dictionary = {
   contact: {
     eyebrow: "Contact",
     title: "Come and train with us",
-    text: "The best way to get to know Rio21 is to try a class. Get in touch and book your free trial class.",
+    text: "The best way to get to know Rio21 is to try a class at our academy in Ramada, Odivelas. Get in touch and book your free trial class.",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
     email: "Email",
@@ -225,7 +231,7 @@ export const en: Dictionary = {
     locationValue: "Av. Amália Rodrigues 30\n2620-521 Ramada, Odivelas",
     directions: "Get directions (GPS)",
     viewOnMaps: "View on Google Maps",
-    mapTitle: "Map showing the Rio21 BJJ location in Ramada, Odivelas"
+    mapTitle: "Map showing the RIO21 Lisboa location in Ramada, Odivelas"
   },
   app: {
     title: "Already a student?",

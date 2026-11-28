@@ -1,4 +1,4 @@
-# Rio21 BJJ — Website
+# RIO21 Lisboa — Website
 
 Site da academia Rio21 BJJ em Odivelas (Lisboa). Página única, minimalista, em **português (`/`)** e **inglês (`/en`)**, com **modo claro e escuro**. O objetivo principal é levar o visitante a marcar a **aula experimental gratuita** pelo WhatsApp.
 
@@ -62,6 +62,16 @@ app/sitemap.ts     → sitemap com hreflang
 components/        → secções da página
 content/           → textos PT/EN, metadados SEO e JSON-LD
 ```
+
+## SEO
+
+- Domínio oficial: `https://www.rio21lisboa.com` (`siteConfig.url`). Marca: **RIO21 Lisboa** (`siteConfig.name`).
+- Títulos e descrições: `content/pt.ts` / `content/en.ts` → `seo`; página Método em `content/curriculum.*.ts` → `seo`.
+- Dados estruturados (JSON-LD): `content/index.ts` (`SportsActivityLocation`, `WebSite`, `FAQPage`, `WebPage` + `BreadcrumbList`).
+- Imagens de partilha 1200×630: `opengraph-image.tsx` / `twitter-image.tsx` em cada rota, desenhadas em `lib/og-image.tsx`.
+- `sitemap.xml` e `robots.txt` gerados por `app/sitemap.ts` e `app/robots.ts`.
+
+Para compilar sem interferir com um `npm run dev` aberto: `NEXT_DIST_DIR=.next-build npm run build`.
 
 ## Antes de publicar
 

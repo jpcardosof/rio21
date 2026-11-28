@@ -138,9 +138,9 @@ const advanced = (
 
 export const methodEn: MethodDictionary = {
   seo: {
-    title: "Method and curriculum | Rio21 BJJ Odivelas",
+    title: "BJJ Method and Curriculum | RIO21 Lisboa, Odivelas",
     description:
-      "Discover the Rio21 method: a week-by-week curriculum for Mini Kids, Kids, Beginners, Advanced and Women, plus the Values Stripes for children."
+      "The RIO21 Lisboa method, a BJJ academy in Ramada, Odivelas: a weekly curriculum for every class and Values Stripes for children."
   },
   nav: "Method",
   eyebrow: "Rio21 Method",

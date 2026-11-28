@@ -8,7 +8,7 @@ import { WhatsAppIcon } from "@/components/icons";
 import { ProgramExplorer } from "@/components/method/ProgramExplorer";
 import { ValuesGrades } from "@/components/method/ValuesGrades";
 import { delay } from "@/components/motion";
-import { getDictionary } from "@/content";
+import { buildMethodJsonLd, getDictionary } from "@/content";
 import { getMethod } from "@/content/curriculum";
 import { localePath, methodPath, type Locale } from "@/content/types";
 import { cycleWeek } from "@/lib/cycle";
@@ -26,6 +26,10 @@ export function MethodPage({ locale }: { locale: Locale }) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildMethodJsonLd(locale)) }}
+      />
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-accent focus:px-4 focus:py-3 focus:text-accent-fg"

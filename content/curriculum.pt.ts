@@ -138,9 +138,9 @@ const advanced = (
 
 export const methodPt: MethodDictionary = {
   seo: {
-    title: "Método e currículo | Rio21 BJJ Odivelas",
+    title: "Método e currículo de Jiu-Jitsu | RIO21 Lisboa, Odivelas",
     description:
-      "Conhece o método da Rio21: currículo semana a semana para Mini Kids, Kids, Iniciantes, Avançados e Feminino, e os Graus de Valores para crianças."
+      "Método da RIO21 Lisboa, academia de Jiu-Jitsu na Ramada, Odivelas: currículo semanal para cada turma e Graus de Valores para crianças."
   },
   nav: "Método",
   eyebrow: "Método Rio21",
