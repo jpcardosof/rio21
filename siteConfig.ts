@@ -70,6 +70,8 @@ export const siteConfig = {
     professors: ["Robson Carvalho", "Appio Neto", "Carlos Tavares", "Kathe Paula"],
     instructors: ["Edder", "Matheus", "Ricardinho"]
   },
+  /** Início do ciclo do currículo (segunda-feira). Mudar para reiniciar a contagem das semanas. */
+  curriculumStart: "2026-11-16",
   /** Horário semanal da academia de Odivelas (índice 0 = segunda-feira). Fonte: tabela oficial de novembro de 2026. */
   timetable: [
     [
