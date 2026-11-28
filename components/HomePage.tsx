@@ -9,15 +9,24 @@ import { RevealObserver } from "@/components/Reveal";
 import { Schedule } from "@/components/Schedule";
 import { StickyCta } from "@/components/StickyCta";
 import { Team } from "@/components/Team";
+import { ThisWeek } from "@/components/ThisWeek";
 import { Trial } from "@/components/Trial";
 import { buildJsonLd, getDictionary } from "@/content";
-import type { Locale } from "@/content/types";
+import { getMethod } from "@/content/curriculum";
+import { methodPath, type Locale } from "@/content/types";
+import { cycleWeek } from "@/lib/cycle";
 import { siteConfig, whatsappUrl } from "@/siteConfig";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const wa = whatsappUrl(dict.whatsappMessage);
   const cta = dict.ui.ctaWhatsapp;
+  const method = getMethod(locale);
+  const now = new Date();
+  const initialWeeks = {
+    16: cycleWeek(now, siteConfig.curriculumStart, 16),
+    8: cycleWeek(now, siteConfig.curriculumStart, 8)
+  };
 
   return (
     <>
@@ -39,6 +48,19 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Trial trial={dict.trial} ui={dict.ui} whatsappHref={wa} instagramHref={siteConfig.contacts.instagramDm} />
         <Classes classes={dict.classes} ctaLabel={cta} whatsappHref={wa} />
         <Schedule schedule={dict.schedule} ctaLabel={cta} whatsappHref={wa} />
+        <ThisWeek
+          eyebrow={method.teaser.eyebrow}
+          text={method.teaser.text}
+          cta={method.teaser.cta}
+          href={methodPath[locale]}
+          weekLabel={method.weekLabel}
+          programs={method.programs.map((program) => ({
+            id: program.id,
+            name: program.name,
+            headlines: program.weeks.map((week) => week.headline)
+          }))}
+          initialWeeks={initialWeeks}
+        />
         <About about={dict.about} />
         <Team team={dict.team} />
         <FAQ faq={dict.faq} />

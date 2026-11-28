@@ -7,15 +7,21 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ArrowIcon, WhatsAppIcon } from "@/components/icons";
 import { delay } from "@/components/motion";
 import type { Dictionary, Locale } from "@/content/types";
+import { navHref } from "@/lib/links";
 
 type HeaderProps = {
   locale: Locale;
   nav: Dictionary["nav"];
   ui: Dictionary["ui"];
   whatsappHref: string;
+  /** Prefixo das âncoras quando não estamos na página principal ("/" ou "/en"). */
+  homeHref?: string;
+  /** Página atual, para marcar o link ativo e trocar de idioma na mesma página. */
+  currentHref?: string;
+  languagePaths?: Record<Locale, string>;
 };
 
-export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
+export function Header({ locale, nav, ui, whatsappHref, homeHref = "", currentHref, languagePaths }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -48,7 +54,7 @@ export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
       }`}
     >
       <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
-        <a href="#inicio" aria-label={ui.logoHome} className="text-fg" onClick={() => setOpen(false)}>
+        <a href={homeHref || "#inicio"} aria-label={ui.logoHome} className="text-fg" onClick={() => setOpen(false)}>
           <Logo className="h-7 sm:h-8" />
         </a>
 
@@ -57,8 +63,11 @@ export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
             {nav.map((item) => (
               <li key={item.href}>
                 <a
-                  href={item.href}
-                  className="rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors duration-300 hover:bg-surface hover:text-fg"
+                  href={navHref(item.href, homeHref)}
+                  aria-current={item.href === currentHref ? "page" : undefined}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 hover:bg-surface hover:text-fg ${
+                    item.href === currentHref ? "bg-surface text-fg" : "text-muted"
+                  }`}
                 >
                   {item.label}
                 </a>
@@ -68,7 +77,7 @@ export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <LanguageSwitch current={locale} label={ui.languageLabel} className="hidden sm:flex" />
+          <LanguageSwitch current={locale} label={ui.languageLabel} paths={languagePaths} className="hidden sm:flex" />
           <ThemeToggle label={ui.themeToggle} />
           <a
             href={whatsappHref}
@@ -109,7 +118,8 @@ export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
               {nav.map((item, index) => (
                 <li key={item.href} className="rise border-b border-line" style={delay(60 + index * 60)}>
                   <a
-                    href={item.href}
+                    href={navHref(item.href, homeHref)}
+                    aria-current={item.href === currentHref ? "page" : undefined}
                     onClick={() => setOpen(false)}
                     className="display flex items-center justify-between py-5 text-4xl"
                   >
@@ -120,7 +130,7 @@ export function Header({ locale, nav, ui, whatsappHref }: HeaderProps) {
               ))}
             </ul>
             <div className="rise mt-auto flex flex-col gap-5 pt-10" style={delay(400)}>
-              <LanguageSwitch current={locale} label={ui.languageLabel} />
+              <LanguageSwitch current={locale} label={ui.languageLabel} paths={languagePaths} />
               <a
                 href={whatsappHref}
                 target="_blank"

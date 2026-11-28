@@ -20,6 +20,7 @@ export const en: Dictionary = {
   whatsappMessage: "Hello! I would like to book a free trial class at Rio21.",
   nav: [
     { href: "#aulas", label: "Classes" },
+    { href: "/en/method", label: "Method" },
     { href: "#horario", label: "Timetable" },
     { href: "#equipa", label: "Team" },
     { href: "#faq", label: "FAQ" },

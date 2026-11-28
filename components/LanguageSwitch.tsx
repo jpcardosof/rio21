@@ -9,11 +9,14 @@ const hreflang: Record<Locale, string> = { pt: "pt-PT", en: "en" };
 export function LanguageSwitch({
   current,
   label,
-  className = ""
+  className = "",
+  paths = localePath
 }: {
   current: Locale;
   label: string;
   className?: string;
+  /** Caminho desta página em cada idioma (por defeito, a página principal). */
+  paths?: Record<Locale, string>;
 }) {
   // Mantém o visitante na mesma secção ao trocar de idioma.
   function keepSection(event: MouseEvent<HTMLAnchorElement>, href: string) {
@@ -35,11 +38,11 @@ export function LanguageSwitch({
               </span>
             )}
             <a
-              href={localePath[locale]}
+              href={paths[locale]}
               hrefLang={hreflang[locale]}
               lang={hreflang[locale]}
               aria-current={active ? "true" : undefined}
-              onClick={(event) => keepSection(event, localePath[locale])}
+              onClick={(event) => keepSection(event, paths[locale])}
               className={`grid h-11 min-w-10 place-items-center px-1 transition-colors ${
                 active ? "text-fg" : "text-muted hover:text-fg"
               }`}

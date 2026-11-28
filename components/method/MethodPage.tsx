@@ -9,7 +9,7 @@ import { ValuesGrades } from "@/components/method/ValuesGrades";
 import { delay } from "@/components/motion";
 import { getDictionary } from "@/content";
 import { getMethod } from "@/content/curriculum";
-import type { Locale } from "@/content/types";
+import { localePath, methodPath, type Locale } from "@/content/types";
 import { cycleWeek } from "@/lib/cycle";
 import { siteConfig, whatsappUrl } from "@/siteConfig";
 
@@ -32,7 +32,15 @@ export function MethodPage({ locale }: { locale: Locale }) {
         {dict.ui.skipToContent}
       </a>
 
-      <Header locale={locale} nav={dict.nav} ui={dict.ui} whatsappHref={wa} />
+      <Header
+        locale={locale}
+        nav={dict.nav}
+        ui={dict.ui}
+        whatsappHref={wa}
+        homeHref={localePath[locale]}
+        currentHref={methodPath[locale]}
+        languagePaths={methodPath}
+      />
 
       <main id="conteudo">
         <section className="pb-16 pt-[calc(var(--header-h)+2.5rem)] lg:pb-20 lg:pt-[calc(var(--header-h)+4.5rem)]">
@@ -85,7 +93,7 @@ export function MethodPage({ locale }: { locale: Locale }) {
         </section>
       </main>
 
-      <Footer footer={dict.footer} nav={dict.nav} />
+      <Footer footer={dict.footer} nav={dict.nav} homeHref={localePath[locale]} />
       <StickyCta href={wa} label={dict.ui.ctaWhatsapp} />
       <RevealObserver />
     </>

@@ -1,14 +1,16 @@
 import { Logo } from "@/components/Logo";
 import { ArrowUpRightIcon } from "@/components/icons";
 import type { Dictionary } from "@/content/types";
+import { navHref } from "@/lib/links";
 import { siteConfig } from "@/siteConfig";
 
 type FooterProps = {
   footer: Dictionary["footer"];
   nav: Dictionary["nav"];
+  homeHref?: string;
 };
 
-export function Footer({ footer, nav }: FooterProps) {
+export function Footer({ footer, nav, homeHref = "" }: FooterProps) {
   const year = new Date().getFullYear();
   const linkClass = "inline-flex min-h-11 items-center gap-1.5 text-muted transition-colors hover:text-fg";
 
@@ -25,7 +27,7 @@ export function Footer({ footer, nav }: FooterProps) {
             <ul className="grid">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className={linkClass}>
+                  <a href={navHref(item.href, homeHref)} className={linkClass}>
                     {item.label}
                   </a>
                 </li>
@@ -51,7 +53,7 @@ export function Footer({ footer, nav }: FooterProps) {
           <p>
             © {year} {siteConfig.name}. {footer.rights}
           </p>
-          <a href="#inicio" className="inline-flex min-h-11 items-center transition-colors hover:text-fg">
+          <a href="#conteudo" className="inline-flex min-h-11 items-center transition-colors hover:text-fg">
             {footer.backToTop} ↑
           </a>
         </div>

@@ -21,6 +21,7 @@ export const pt: Dictionary = {
   whatsappMessage: "Olá! Gostaria de marcar uma aula experimental gratuita na Rio21.",
   nav: [
     { href: "#aulas", label: "Aulas" },
+    { href: "/metodo", label: "Método" },
     { href: "#horario", label: "Horário" },
     { href: "#equipa", label: "Equipa" },
     { href: "#faq", label: "FAQ" },
