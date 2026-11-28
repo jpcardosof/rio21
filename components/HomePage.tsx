@@ -1,3 +1,4 @@
+import { AppStrip } from "@/components/AppStrip";
 import { About } from "@/components/About";
 import { Classes } from "@/components/Classes";
 import { Contact } from "@/components/Contact";
@@ -67,6 +68,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Contact contact={dict.contact} ui={dict.ui} whatsappHref={wa} />
       </main>
 
+      <AppStrip app={dict.app} />
       <Footer footer={dict.footer} nav={dict.nav} />
       <StickyCta href={wa} label={cta} />
       <RevealObserver />

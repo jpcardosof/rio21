@@ -42,6 +42,11 @@ export const siteConfig = {
     instagramDm: "https://ig.me/m/rio21.matriz"
   },
   /** Academia "RIO21 - Matriz Ramada" (link do Google Maps enviado pela academia). */
+  /** App MentorFlow, usada pelos alunos para marcar aulas. */
+  apps: {
+    appStore: "https://apps.apple.com/app/id6755339405",
+    googlePlay: "https://play.google.com/store/apps/details?id=eu.mentorflow.client"
+  },
   location: {
     streetAddress: "Avenida Amália Rodrigues 30, Ramada",
     postalCode: "2620-521",

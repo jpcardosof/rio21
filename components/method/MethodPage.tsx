@@ -1,3 +1,4 @@
+import { AppStrip } from "@/components/AppStrip";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealObserver } from "@/components/Reveal";
@@ -93,6 +94,7 @@ export function MethodPage({ locale }: { locale: Locale }) {
         </section>
       </main>
 
+      <AppStrip app={dict.app} />
       <Footer footer={dict.footer} nav={dict.nav} homeHref={localePath[locale]} />
       <StickyCta href={wa} label={dict.ui.ctaWhatsapp} />
       <RevealObserver />

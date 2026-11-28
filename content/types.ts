@@ -98,6 +98,7 @@ export type Dictionary = {
     mapTitle: string;
   };
   footer: { slogan: string; rights: string; backToTop: string };
+  app: { title: string; text: string; appStoreLabel: string; googlePlayLabel: string };
 };
 
 export const methodPath: Record<Locale, string> = { pt: "/metodo", en: "/en/method" };

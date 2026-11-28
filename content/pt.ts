@@ -229,6 +229,12 @@ export const pt: Dictionary = {
     viewOnMaps: "Ver no Google Maps",
     mapTitle: "Mapa da localização da Rio21 BJJ na Ramada, Odivelas"
   },
+  app: {
+    title: "Já és aluno?",
+    text: "Marca as tuas aulas e acompanha a tua evolução na app MentorFlow.",
+    appStoreLabel: "Descarregar a app MentorFlow na App Store",
+    googlePlayLabel: "Descarregar a app MentorFlow no Google Play"
+  },
   footer: {
     slogan: "Mente forte, corpo forte.",
     rights: "Todos os direitos reservados.",
