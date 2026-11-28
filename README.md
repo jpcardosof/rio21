@@ -28,12 +28,21 @@ Abre `http://localhost:3000` (PT) ou `http://localhost:3000/en` (EN).
 | Professores e instrutores | `siteConfig.ts` → `team` |
 | Imagens usadas | `siteConfig.ts` → `images` |
 | Cores (design system) | `app/globals.css` → `:root` e `.dark` |
+| Currículos (Método) e Graus de Valores | `content/curriculum.pt.ts` e `content/curriculum.en.ts` |
+| Início do ciclo de semanas | `siteConfig.ts` → `curriculumStart` (segunda-feira) |
+| Links da app MentorFlow | `siteConfig.ts` → `apps` |
 
 Ao adicionar um texto novo, adiciona-o **nos dois ficheiros** (`pt.ts` e `en.ts`). O TypeScript avisa se faltar algum.
 
 ### Horário
 
 Cada sessão é `["HH:MM", tipo]`. Os tipos são `beginners`, `allLevels`, `advanced`, `noGi`, `sparring`, `miniKids`, `kids`, `teens`. Os tipos `beginners` e `allLevels` aparecem assinalados como "ideal para a primeira aula".
+
+### Método e semana atual
+
+A página **Método** (`/metodo` e `/en/method`) mostra o currículo de cada turma e os Graus de Valores. A semana atual é calculada automaticamente a partir de `curriculumStart` (hora de Lisboa): 16 semanas para Mini Kids, Kids, Iniciantes e Avançados, 8 para o Feminino, sempre a recomeçar sem pausas. Para reiniciar o ciclo, muda a data para a segunda-feira da nova semana 1.
+
+Testes da contagem de semanas e dos conteúdos: `npm test`.
 
 ## Design system
 
